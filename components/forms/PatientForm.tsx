@@ -1,27 +1,18 @@
 "use client"
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
 import { z } from "zod";
-
-import { Button } from "@/components/ui/button"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { useState } from "react";
+import { useForm } from "react-hook-form"
+import { Form } from "@/components/ui/form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { FormDefaultValues } from "@/hook/values";
 import { FormValidation } from "@/hook/validation";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import CustomForm, { FormFieldEnum } from "../CustomForm";
+import SubmitButton from "../SubmitButton";
 
 const PatientForm = () => {
-    const router = useRouter();
+    // const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof FormValidation>>({
@@ -42,7 +33,7 @@ const PatientForm = () => {
             // const newUser = await createUser(user);
             const newUser = user;
 
-            if(newUser) {
+            if (newUser) {
                 // router.push(`/patients/${newUser.$id}/register`)
             }
         } catch (error) {
@@ -55,27 +46,43 @@ const PatientForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex-1 space-y-6">
+                <section className="mb-12 space-y-4">
+                    <h1 className="header">Hi there 👋</h1>
+                    <p className="text-dark-700">Get started with appointments.</p>
+                </section>
+
+                <CustomForm
+                    fieldType={FormFieldEnum.INPUT}
                     control={form.control}
                     name="name"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Username</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormDescription>
-                                This is your public display name.
-                            </FormDescription>
-                            <FormMessage />
-                        </FormItem>
-                    )}
+                    label="Full name"
+                    placeholder="Somaya Adel"
+                    iconSrc="/assets/icons/user.svg"
+                    iconAlt="user"
                 />
-                <Button type="submit">Submit</Button>
+
+                <CustomForm
+                    fieldType={FormFieldEnum.INPUT}
+                    control={form.control}
+                    name="email"
+                    label="Email"
+                    placeholder="somayaAdel@gmail.com"
+                    iconSrc="/assets/icons/email.svg"
+                    iconAlt="email"
+                />
+
+                <CustomForm
+                    fieldType={FormFieldEnum.PHONE_INPUT}
+                    control={form.control}
+                    name="phone"
+                    label="Phone number"
+                    placeholder="03 3358798"
+                />
+                <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
             </form>
         </Form>
     )
 }
 
-export default PatientForm
+export default PatientForm;

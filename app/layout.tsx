@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import {  Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-// import { cn } from "./lib/utils";
+import { cn } from "@/lib/utils";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "CarePluse",
-  description: "A healthcare management system",
+  title: "CarePulse",
+  description:
+    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+  icons: {
+    icon: "/assets/icons/logo-icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -24,13 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        // className={cn('min-h-screen bg-dark-300 font-sans antialiased', plusJakartaSans.variable)} 
-        className={`${plusJakartaSans.variable} antialiased`} 
+        className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)} 
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
         </ThemeProvider>
       </body>
