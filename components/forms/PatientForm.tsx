@@ -1,48 +1,46 @@
-"use client"
+"use client";
 
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useForm } from "react-hook-form"
-import { Form } from "@/components/ui/form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { FormDefaultValues } from "@/hook/values";
-import { FormValidation } from "@/hook/validation";
-import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Form } from "@/components/ui/form";
+import { createUser } from "@/lib/actions/patient.actions";
+
+import "react-phone-number-input/style.css";
 import CustomForm, { FormFieldEnum } from "../CustomForm";
 import SubmitButton from "../SubmitButton";
+import { FormValidation } from "@/hook/validation";
+import { FormDefaultValues } from "@/hook/values";
 
 const PatientForm = () => {
-    // const router = useRouter();
+    const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof FormValidation>>({
         resolver: zodResolver(FormValidation),
         defaultValues: FormDefaultValues,
-    })
+    });
 
-    const onSubmit = async (values: z.infer<typeof FormValidation>) => {
+    const onSubmit = async ({name,email,phone}: z.infer<typeof FormValidation>) => {
         setIsLoading(true);
 
         try {
-            const user = {
-                name: values.name,
-                email: values.email,
-                phone: values.phone,
-            }
+            const userData = {name,email,phone};
 
-            // const newUser = await createUser(user);
-            const newUser = user;
+            const user = await createUser(userData);
 
-            if (newUser) {
-                // router.push(`/patients/${newUser.$id}/register`)
+            if (user) {
+                router.push(`/patients/${user.$id}/register`);
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
 
         setIsLoading(false);
-    }
-
+    };
 
     return (
         <Form {...form}>
@@ -57,7 +55,7 @@ const PatientForm = () => {
                     control={form.control}
                     name="name"
                     label="Full name"
-                    placeholder="Somaya Adel"
+                    placeholder="John Doe"
                     iconSrc="/assets/icons/user.svg"
                     iconAlt="user"
                 />
@@ -67,7 +65,7 @@ const PatientForm = () => {
                     control={form.control}
                     name="email"
                     label="Email"
-                    placeholder="somayaAdel@gmail.com"
+                    placeholder="johndoe@gmail.com"
                     iconSrc="/assets/icons/email.svg"
                     iconAlt="email"
                 />
@@ -77,12 +75,13 @@ const PatientForm = () => {
                     control={form.control}
                     name="phone"
                     label="Phone number"
-                    placeholder="03 3358798"
+                    placeholder="(555) 123-4567"
                 />
-                <SubmitButton isLoading={isLoading}>Get started</SubmitButton>
+
+                <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
             </form>
         </Form>
-    )
-}
+    );
+};
 
 export default PatientForm;

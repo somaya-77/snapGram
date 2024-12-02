@@ -14,6 +14,9 @@ import Image from 'next/image';
 import { Textarea } from './ui/textarea';
 import { Checkbox } from './ui/checkbox';
 import { Select, SelectContent, SelectTrigger, SelectValue } from './ui/select';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+import { E164Number } from "libphonenumber-js/core";
 
 export enum FormFieldEnum {
     INPUT = "input",
@@ -121,7 +124,15 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
         case FormFieldEnum.PHONE_INPUT:
             return (
                 <FormControl>
-                    {/* TODO */}
+                    <PhoneInput
+                    defaultCountry='EG'
+                        placeholder={props.placeholder}
+                        international
+                        withCountryCallingCode
+                        value={field.value as E164Number | undefined}
+                        onChange={field.onChange} 
+                        className='input-phone'
+                        />
                 </FormControl>
             );
 
