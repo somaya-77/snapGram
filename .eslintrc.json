@@ -1,3 +1,37 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
-}
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2021": true
+    },
+    "extends": [
+      "next/core-web-vitals",
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:import/recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+      "import/no-unresolved": "off",
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-page-custom-font": "off",
+      "import/no-absolute-path": "error",
+      "import/default": "error",
+      "import/no-named-as-default": "off",
+      "import/named": "off",
+        "no-unused-vars": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "no-undef": "off"
+    }
+  }
+  

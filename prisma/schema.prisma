@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @db.VarChar(70)
+  name      String   @db.VarChar(70)
+  email     String   @unique
+  password  String
+  isAdmin   Boolean
+  imageUrl  String?
+  bio       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  comment Comments[]
+  Save    Save[]
+  Like    Like[]
+  Post    Post[]
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  caption   String
+  location  String?
+  tags      Tag[]    @relation("PostTags")
+  imageUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  comment Comments[]
+  Save    Save[]
+  Like    Like[]
+  userId    Int       // Add userId field here
+  user      User      @relation(fields: [userId], references: [id])
+}
+
+model Like {
+  id     Int @id @default(autoincrement())
+  postId Int
+  userId Int
+
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, postId])
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  post Post[] @relation("PostTags")
+}
+
+model Comments {
+  id        Int      @id @default(autoincrement())
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  postId    Int
+  userId    Int
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Save {
+  id     Int @id @default(autoincrement())
+  postId Int
+  userId Int
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
