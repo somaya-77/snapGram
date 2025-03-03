@@ -5,7 +5,7 @@ import AuthLayout from '@/src/components/AuthLayout';
 import UpdatePostForm from '@/src/components/forms/UpdatePostForm';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const EditPostPage = ({ params }: { params: Promise<{ userId: string }> }) => {
+const EditPostPage = () => {
     const [queryClient] = useState(() => new QueryClient());
 
     return (
@@ -18,7 +18,7 @@ const EditPostPage = ({ params }: { params: Promise<{ userId: string }> }) => {
                             <h2 className='h3-bold md:h2-bold text-left w-full'>Update Post</h2>
                         </div>
 
-                        <UpdatePostForm params={params} />
+                        <UpdatePostForm  />
                     </section>
                 </div>
             </AuthLayout>

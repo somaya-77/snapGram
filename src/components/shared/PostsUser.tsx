@@ -20,7 +20,7 @@ const PostsUser = () => {
                     onClick={() => setShowPosts(true)}
                     className="profile-tab rounded-l-lg" >
                     <Image
-                        src={"/assets/icons/posts.svg"}
+                        src="/assets/icons/posts.svg"
                         alt="posts"
                         width={20}
                         height={20}
@@ -31,7 +31,7 @@ const PostsUser = () => {
                     onClick={() => setShowPosts(false)}
                     className="profile-tab rounded-r-lg">
                     <Image
-                        src={"/assets/icons/like.svg"}
+                        src="/assets/icons/like.svg"
                         alt="like"
                         width={20}
                         height={20}

@@ -9,10 +9,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import ProfileUploader from "@/src/components/shared/ProfileUploader";
 import { Button, Input, Textarea } from "@/src/components/ui";
 import { useParams, useRouter } from 'next/navigation';
-// import { user_fields } from "@/src/constants";
 import { useGetProfile, usePutProfile } from "@/src/hook/queries";
 import { useEffect } from "react";
 import { toast } from 'react-toastify';
+
 
 const UpdateUserForm = () => {
   const route = useRouter();
@@ -29,10 +29,9 @@ const UpdateUserForm = () => {
       name: profile?.name || '',
       email: profile?.email || '',
       username: profile?.username || '',
-      imageUrl: profile?.imageUrl || [],
+      imageUrl: profile?.imageUrl || '',
     },
   });
-
 
   const handleUpdate = async (values: z.infer<typeof ProfileValidation>) => {
     mutate({
@@ -40,21 +39,27 @@ const UpdateUserForm = () => {
       bio: values.bio,
       name: values.name,
       email: values.email,
-      imageUrl: values.imageUrl,
+      imageUrl: values?.imageUrl as string,
       username: values.username,
-  });
-  toast.success("Your updated profile success");
-  route.replace("-1");
+    });
+    toast.success("Your updated profile success");
+    route.replace(`/auth/profile/${id}`);
   }
 
-  useEffect(() => {
-    form.setValue('bio', profile?.bio)
-    form.setValue('name', profile?.name)
-    form.setValue('email', profile?.email)
-    form.setValue('imageUrl', profile?.imageUrl)
-    form.setValue('username', profile?.username)
-  }, [profile,form])
 
+  useEffect(() => {
+    if (profile) {
+      form.setValue("bio", profile.bio || "");
+      form.setValue("name", profile.name || "");
+      form.setValue("email", profile.email || "");
+      form.setValue("imageUrl", profile.imageUrl || "");
+      form.setValue("username", profile.username || "");
+    }
+  }, [profile, form]);
+  
+
+ 
+  console.log("profile",profile?.imageUrl)
   return (
     <Form {...form}>
       <form
@@ -67,10 +72,7 @@ const UpdateUserForm = () => {
           render={({ field }) => (
             <FormItem className="flex">
               <FormControl>
-                <ProfileUploader
-                  fieldChange={field.onChange}
-                  mediaUrl={profile?.imageUrl}
-                />
+                <ProfileUploader field={field}/>
               </FormControl>
               <FormMessage className="shad-form_message" />
             </FormItem>
@@ -149,7 +151,7 @@ const UpdateUserForm = () => {
           <Button
             type="button"
             className="shad-button_dark_4"
-            onClick={() => route.replace("-1")}>
+            onClick={() => route.replace("/")}>
             Cancel
           </Button>
           <Button
@@ -169,7 +171,7 @@ export default UpdateUserForm;
 
 
 
-  {/* {user_fields.map(el => {
+{/* {user_fields.map(el => {
           const {name, label, type} = el;
 
           return (

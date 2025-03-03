@@ -1,6 +1,7 @@
 // import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
     images: {
+        domains: ["res.cloudinary.com"],
         remotePatterns: [
             {
                 protocol: 'http',
@@ -11,6 +12,11 @@ const nextConfig = {
                 hostname: 'example.com',
             },
         ],
+    },
+    env: {
+        CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+        CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+        CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
     },
 };
 

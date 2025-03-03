@@ -7,6 +7,7 @@ const fetchData = async (userId: string) => {
     if (!userId) throw new Error("userId is required");
 
     const response = await axios.get(`${DOMAIN}/api/users/profile/${userId}`);
+    console.log("response.data",response.data)
     return response.data;
 };
 

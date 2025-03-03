@@ -9,7 +9,6 @@ export default async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
     const isProtected = protectedRoutes.includes(path);
     const isPublic = publicRoutes.includes(path);
-    console.log("JWT Token:", jwtToken);
     if (isProtected && !jwtToken) {
         return NextResponse.redirect(new URL("/auth/login", request.nextUrl));
     }

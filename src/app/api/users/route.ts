@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
                 username: true,
                 email: true,
                 createdAt: true,
+                imageUrl: true,
             },
         });
 

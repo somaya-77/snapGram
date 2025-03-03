@@ -9,7 +9,7 @@ import Image from "next/image";
 const LikedPosts = ({ id }: { id: string }) => {
     const { data: likes, isLoading } = useGetLikesUser(id);
 
-    if (!likes) {
+    if (likes.length === 0) {
         return <p>No liked posts yet!</p>
     }
     return isLoading ? <Loader /> : <ul className="grid-container">

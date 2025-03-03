@@ -3,11 +3,10 @@ import Link from 'next/link';
 import Loader from './Loader';
 import Image from 'next/image';
 import useAllGetPosts from '@/src/hook/queries/users/useGetAllPosts';
-import { IPost } from '@/src/types';
+
 
 const Posts = ({ id }: { id: string }) => {
     const { data: allPosts, isLoading } = useAllGetPosts(id);
-
     return isLoading ? <Loader /> : <ul className="grid-container">
         {allPosts?.map((post) => (
             <li key={post.id} className="relative min-w-80 h-80">

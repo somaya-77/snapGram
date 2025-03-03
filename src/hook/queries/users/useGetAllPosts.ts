@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 const fetchAllPosts = async (id: string): Promise<IPost[]> => {
-    const response = await axios.get<IPost[]>(`${DOMAIN}/api//posts/user/${id}`);
+    const response = await axios.get<IPost[]>(`${DOMAIN}/api/posts/user/${id}`);
     return response.data;
 }
 const useGetAllPosts = (id: string): UseQueryResult<IPost[]> => {

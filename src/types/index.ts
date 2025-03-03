@@ -44,6 +44,7 @@ export type INewUser = {
   username: string;
   password: string;
   isAdmin: boolean;
+  imageUrl?: string ;
 };
 
 export type ILoginUser = {
@@ -129,4 +130,8 @@ export interface IPost {
 export interface IUserPost extends IUser {
   post: IPost[];
   user: IUser[];
+}
+
+export type FormDataFile = Blob & {
+  name?: string;
 }

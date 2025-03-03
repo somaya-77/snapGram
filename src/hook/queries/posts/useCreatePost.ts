@@ -3,24 +3,14 @@ import axios from "axios";
 import { DOMAIN } from "@/src/lib/constants";
 
 const fetchData = async ({ caption, location, imageUrl, tags }: { caption: string; location: string; imageUrl: string; tags: string[] }) => {
-    const formData = new FormData();
-    formData.append("caption", caption);
-    formData.append("location", location);
-    formData.append("tags", tags.join(','));  
- 
-    // imageUrl.forEach(file => {
-        formData.append("imageUrl", imageUrl);
-    // });
 
-    const response = await axios.post(`${DOMAIN}/api/posts`, formData, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
+    const response = await axios.post(`${DOMAIN}/api/posts`,  {
+        caption, location, imageUrl, tags
     });
     return response.data;
 };
 
-
+console.log("fetchData",fetchData)
 const useCreatePost = () => {
     const queryClient = useQueryClient();
 

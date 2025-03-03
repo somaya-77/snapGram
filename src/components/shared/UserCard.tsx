@@ -5,12 +5,12 @@ import { Button } from '../ui';
 import Image from 'next/image';
 import { IUser } from '@/src/types';
 import { Loader } from 'lucide-react';
-import useGetUser from '@/src/hook/queries/users/useGetUsers';
-import useAllGetUsers from '@/src/hook/queries/users/useGetAllUsers';
+import { useGetUser, useAllGetUsers } from '@/src/hook/queries';
 
 const UserCard = () => {
     const userRegistration = useGetUser()
     const { data, isLoading } = useAllGetUsers()
+
     return (
         <>
             {isLoading && !data ? (
@@ -23,11 +23,11 @@ const UserCard = () => {
                             <li key={user.id} className="flex-1 min-w-[100px] w-full  ">
                                 <Link href={`auth/profile/${user?.id}`} className="user-card">
                                     <Image
-                                        src={user?.imageUrl || "/assets/icons/profile-placeholder.svg"}
+                                        src={user.imageUrl || "/assets/icons/profile-placeholder.svg"}
                                         alt="creator"
                                         className="rounded-full"
-                                        width={14}
-                                        height={14}
+                                        width={48}
+                                        height={48}
                                     />
 
                                     <div className="flex-center flex-col gap-1">

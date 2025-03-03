@@ -37,6 +37,7 @@ export async function POST(request: NextRequest) {
                 username: body.username,
                 password: hash,
                 isAdmin: false,
+                imageUrl: body.imageUrl || '',
 
             },
             select: {
@@ -44,6 +45,7 @@ export async function POST(request: NextRequest) {
                 name: true,
                 username: true,
                 isAdmin: true,
+                imageUrl: true,
             }
         });
 
@@ -60,7 +62,8 @@ export async function POST(request: NextRequest) {
                 id: newUser.id,
                 name: newUser.name,
                 username: newUser.username,
-                isAdmin: newUser.isAdmin
+                isAdmin: newUser.isAdmin,
+                imageUrl: newUser.imageUrl,
             }
         }, { status: 201, headers: { "Set-Cookie": cookie } });
 

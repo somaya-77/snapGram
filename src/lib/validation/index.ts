@@ -38,7 +38,9 @@ export const CommentValidation = z.object({
 
 // profile
 export const ProfileValidation = z.object({
-    imageUrl: z.string().url(),
+    imageUrl: z.string().url().optional(),
+
+
     name: z.string().min(2, { message: "Name must be at least 2 characters." }),
     username: z.string().min(2, { message: "Name must be at least 2 characters." }),
     email: z.string().email(),
@@ -47,7 +49,8 @@ export const ProfileValidation = z.object({
 
 // update profile
 export const UpdateProfileValidation = z.object({
-    imageUrl: z.custom<File[]>().optional(),
+    imageUrl: z.string().url().optional(),
+
     name: z.string().min(2, { message: "Name must be at least 2 characters." }).optional(),
     username: z.string().min(2, { message: "Name must be at least 2 characters." }).optional(),
     email: z.string().email().optional(),

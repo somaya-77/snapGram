@@ -13,7 +13,7 @@ const StatBlock = ({ value, label }: StatBlockProps) => (
     </div>
 );
 
-const Content =  () => {
+const Content = () => {
     const params = useParams();
     const id = params?.id as string;
     const profileId = new Promise<{ userId: string }>((resolve) => {
@@ -28,8 +28,10 @@ const Content =  () => {
                         <Image
                             src={profile?.imageUrl || "/assets/icons/profile-placeholder.svg"}
                             alt="profile"
-                            className="w-28 h-28 lg:h-36 lg:w-36 rounded-full"
+                            className="rounded-full object-cover object-top" width={150}
+                            height={150}
                         />
+
                         <div className="flex flex-col flex-1 justify-between md:mt-2">
                             <div className="flex flex-col w-full">
                                 <h1 className="text-center xl:text-left h3-bold md:h1-semibold w-full">

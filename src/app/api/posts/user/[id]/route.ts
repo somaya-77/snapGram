@@ -6,30 +6,30 @@ export async function GET(_request: NextRequest, {params}:{params: Promise<{ id:
     const id = parseInt(resolvedParams.id);
     try {
         
-        if (isNaN(id)) {
+        if (!id || isNaN(id)) {
             return NextResponse.json({ message: "Invalid user ID!" }, { status: 400 });
         }
         
         const posts = await prisma.post.findMany({
-            where: { id }, 
+            where: { userId: id }, 
             include: {
-                // user: true,
-                // Save: true,
-                // Like: true,
-                // tags: true,
-                // comment: {
-                //     include: {
-                //         user: {
-                //             select: {
-                //                 username: true,
-                //                 name: true,
-                //             }
-                //         },
-                //     },
-                //     orderBy: {
-                //         createdAt: 'desc',
-                //     }
-                // }
+                user: true,
+                Save: true,
+                Like: true,
+                tags: true,
+                comment: {
+                    include: {
+                        user: {
+                            select: {
+                                username: true,
+                                name: true,
+                            }
+                        },
+                    },
+                    orderBy: {
+                        createdAt: 'desc',
+                    }
+                }
             },
             orderBy: {
                 createdAt: 'desc', 

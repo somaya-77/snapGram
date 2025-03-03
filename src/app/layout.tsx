@@ -13,7 +13,7 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Snapgram",
   description:
-    "SnapGram is a dynamic social media platform designed for sharing moments, creativity, and inspiration with the world. Whether you're capturing daily highlights, sharing artistic visuals, or engaging with a vibrant community, SnapGram makes social networking fast, fun, and interactive..",
+    "SnapGram is a dynamic social media platform designed for sharing moments, creativity, and inspiration with the world. Whether you're capturing daily highlights, sharing artistic visuals, or engaging with a vibrant community, SnapGram makes social networking fast, fun, and interactive.",
   icons: {
     icon: "/assets/icons/logo-icon.svg",
   },

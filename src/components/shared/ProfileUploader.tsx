@@ -1,27 +1,68 @@
 'use client'
-import { convertFileToUrl } from "@/src/lib/utils";
-import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
+import Image from "next/image";
+import { DOMAIN } from "@/src/lib/constants";
 
+const ProfileUploader = ({field}) => {
+    const [preview, setPreview] = useState<string | null>(null);
 
-type ProfileUploaderProps = {
-    fieldChange: (files: File[]) => void;
-    mediaUrl: string;
-};
+    async function uploadImage(file: File) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("pathName", "my-uploads"); 
+        console.log("🔍 preview URL:", preview);
 
-const ProfileUploader = ({ fieldChange, mediaUrl }: ProfileUploaderProps) => {
-    const [file, setFile] = useState<File[]>([]);
-    const [fileUrl, setFileUrl] = useState<string>(mediaUrl);
+        try {
+            const response = await fetch(`${DOMAIN}/api/upload`, {
+                method: "POST",
+                body: formData,
+            });
 
-    const onDrop = useCallback(
-        (acceptedFiles: FileWithPath[]) => {
-            setFile(acceptedFiles);
-            fieldChange(acceptedFiles);
-            setFileUrl(convertFileToUrl(acceptedFiles[0]));
-        },
-        [file]
-    );
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "حدث خطأ أثناء رفع الصورة");
+            }
+
+            return data.url;
+        } catch (error) {
+            return null;
+        }
+    }
+
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+
+        if (file) {
+            const uploadedUrl = await uploadImage(file);
+            if (uploadedUrl) {
+                setPreview(uploadedUrl);
+                field.onChange(uploadedUrl || "");
+
+            }
+        }
+    };
+
+    const onDrop = useCallback(async (acceptedFiles: FileWithPath[]) => {
+
+        const file = acceptedFiles[0];
+        if (file) {
+            const uploadedUrl = await uploadImage(file);
+
+            if (uploadedUrl) {
+                setPreview(uploadedUrl);
+                field.onChange(uploadedUrl || "");
+            }
+        }
+    }, [field]);
+
+    useEffect(() => {
+        if (field.value) {
+            setPreview(field.value);
+        }
+    }, [field.value]);
+    
 
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
@@ -31,15 +72,15 @@ const ProfileUploader = ({ fieldChange, mediaUrl }: ProfileUploaderProps) => {
     });
 
     return (
-        <div {...getRootProps()}>
-            <input {...getInputProps()} className="cursor-pointer" />
+        <div {...getRootProps()} className="cursor-pointer">
+            <input {...getInputProps()} onChange={handleFileChange} />
 
             <div className="cursor-pointer flex-center gap-4">
                 <Image
-                    width={24}
-                    height={24}
-                    src={fileUrl || "/assets/icons/profile-placeholder.svg"}
-                    alt="image"
+                    width={150}
+                    height={150}
+                    src={preview && preview.startsWith("http") ? preview : "/assets/icons/profile-placeholder.svg"}
+                    alt="profile photo"
                     className="rounded-full object-cover object-top"
                 />
                 <p className="text-primary-500 small-regular md:base-semibold">
@@ -51,3 +92,16 @@ const ProfileUploader = ({ fieldChange, mediaUrl }: ProfileUploaderProps) => {
 };
 
 export default ProfileUploader;
+
+
+
+
+
+
+
+
+
+
+
+
+
