@@ -5,7 +5,7 @@ const publicRoutes = ["/auth/login", "/auth/register"];
 
 export default async function middleware(request: NextRequest) {
     // const cookies = request.cookies;
-    const jwtToken = request.cookies.get('jwtToken')?.value as string;
+    const jwtToken = request.cookies.get('jwtToken')?.value ;
     const path = request.nextUrl.pathname;
     const isProtected = protectedRoutes.includes(path);
     const isPublic = publicRoutes.includes(path);
@@ -17,14 +17,9 @@ export default async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL("/", request.nextUrl));
     }
 
-
     if (isProtected && jwtToken) {
         return NextResponse.next();
     }
-
-    // return false;
-
-
 }
 
 export const config = {
