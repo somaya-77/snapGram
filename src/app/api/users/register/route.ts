@@ -17,13 +17,15 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json() as INewUser;
         const validation = RegisterValidation.safeParse(body);
-
+        console.log('Finding user:', body.email);
         if (!validation.success) {
             return NextResponse.json({ message: validation.error.errors[0].message }, { status: 400 });
         }
+        console.log('Request Body:', body);
 
         // check if user is registered
         const user = await prisma.user.findUnique({ where: { email: body.email } });
+        console.log('User found:', user);
         if (user) {
             return NextResponse.json({ message: "this user already registered" }, { status: 400 });
         }
@@ -36,7 +38,7 @@ export async function POST(request: NextRequest) {
                 email: body.email,
                 username: body.username,
                 password: hash,
-                isAdmin: false,
+                isAdmin: true, 
                 imageUrl: body.imageUrl || '',
 
             },
@@ -68,8 +70,9 @@ export async function POST(request: NextRequest) {
         }, { status: 201, headers: { "Set-Cookie": cookie } });
 
 
-    } catch {
-        return NextResponse.json({ message: "internal server error" }, { status: 500 });
+    } catch (error){
+        console.error("Error during registration:", error);
+        return NextResponse.json({ message: "internal server error", error: error.message}, { status: 500 });
     }
 
 }
