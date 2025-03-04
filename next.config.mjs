@@ -14,7 +14,6 @@ const nextConfig = {
         ],
     },
     env: {
-        // NODE_ENV: process.env.NODE_ENV,
         NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
         CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
         CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
