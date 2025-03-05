@@ -41,7 +41,8 @@ export async function POST(request: NextRequest) {
         });
 
         return NextResponse.json({message: "Authenticated"}, { status: 200, headers: {"Set-Cookie": cookie} });
-    } catch {
+    } catch (error) {
+        console.error("🔥 Server error:", error);
         return NextResponse.json({ message: "internal server error" }, { status: 500 });
     }
 
