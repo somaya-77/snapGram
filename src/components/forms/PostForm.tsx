@@ -3,12 +3,12 @@ import z from "zod";
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
-import { post_fields } from "@/src/constants";
+import { post_fields } from "@/constants";
 import { Button, Input, Textarea } from "../ui";
 import { FileUploader, Loader } from "../shared";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PostFormValidation } from "@/src/lib/validation";
-import useCreatePost from "@/src/hook/queries/posts/useCreatePost";
+import { PostFormValidation } from "@/lib/validation";
+import useCreatePost from "@/hook/queries/posts/useCreatePost";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { useState } from "react";
 

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 
 const fetchLogout = async () => {
     const response = await axios.get(`${DOMAIN}/api/users/logout`);

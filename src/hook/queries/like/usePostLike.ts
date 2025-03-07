@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 
 const likePost = async ({ postId, userId }: { postId: string; userId: string }) => {
     const response = await axios.post(`${DOMAIN}/api/posts/like`, { postId, userId });

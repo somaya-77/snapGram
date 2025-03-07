@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import prisma from "../../../../lib/db";
-import { ILoginUser } from "@/src/types";
-import {  setCookie } from "@/src/lib/token";
-import { LoginValidation } from "@/src/lib/validation";
+import { ILoginUser } from "@/types";
+import {  setCookie } from "@/lib/token";
+import { LoginValidation } from "@/lib/validation";
 import { NextRequest, NextResponse } from "next/server";
 
 /**

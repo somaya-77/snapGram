@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import Image from "next/image";
-import { INavLink } from "@/src/types";
+import { INavLink } from "@/types";
 import { usePathname } from "next/navigation";
 
 const LinkSidBar = ({ imageUrl, route, label }: INavLink) => {

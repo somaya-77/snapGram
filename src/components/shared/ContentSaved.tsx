@@ -1,10 +1,10 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image';
-import { IPost } from '@/src/types';
-import { Loader } from '@/src/components/shared';
-import useGetUser from '@/src/hook/queries/users/useGetUsers';
-import useGetSavesUser from '@/src/hook/queries/save/useGetSavesUser';
+import { IPost } from '@/types';
+import { Loader } from '@/components/shared';
+import useGetUser from '@/hook/queries/users/useGetUsers';
+import useGetSavesUser from '@/hook/queries/save/useGetSavesUser';
 
 const ContentSaved = () => {
     const { data: user } = useGetUser()

@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import { Input } from '@/src/components/ui';
+import { Input } from '@/components/ui';
 import Image from 'next/image';
 
 interface SearchProps {

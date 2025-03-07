@@ -6,9 +6,9 @@ import { Button, Input } from "../ui";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useParams } from 'next/navigation';
-import {useCreateComment} from "@/src/hook/queries";
+import {useCreateComment} from "@/hook/queries";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CommentValidation } from "@/src/lib/validation";
+import { CommentValidation } from "@/lib/validation";
 import Image from "next/image";
 
 

@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import Image from "next/image";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 
 const ProfileUploader = ({field}) => {
     const [preview, setPreview] = useState<string | null>(null);

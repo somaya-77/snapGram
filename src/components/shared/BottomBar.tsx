@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import Image from 'next/image';
-import { bottomLinks } from '@/src/constants';
+import { bottomLinks } from '@/constants';
 import { usePathname } from "next/navigation";
 
 const BottomBar = () => {

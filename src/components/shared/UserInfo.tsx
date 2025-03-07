@@ -1,6 +1,6 @@
 import PostStats from './PostStats';
-import useGetUser from '@/src/hook/queries/users/useGetUsers';
-import { IPost, Tag } from '@/src/types';
+import useGetUser from '@/hook/queries/users/useGetUsers';
+import { IPost, Tag } from '@/types';
 import ControlPost from './ControlPost';
 
 // compare between current user and created post

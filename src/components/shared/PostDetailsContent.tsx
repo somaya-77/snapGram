@@ -1,7 +1,7 @@
 "use client";
-import useGetPost from "@/src/hook/queries/posts/useGetPost";
-import CommentForm from "@/src/components/forms/CommentForm";
-import { Loader, Comments, UserInfo } from "@/src/components/shared";
+import useGetPost from "@/hook/queries/posts/useGetPost";
+import CommentForm from "@/components/forms/CommentForm";
+import { Loader, Comments, UserInfo } from "@/components/shared";
 import Image from "next/image";
 
 const PostDetailsContent = ({ id }: { id: string }) => {

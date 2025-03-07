@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import React, { useState } from 'react';
-import Login from '@/src/components/forms/Login';
+import Login from '@/components/forms/Login';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const Signin = () => {

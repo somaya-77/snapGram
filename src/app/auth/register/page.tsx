@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import React, { useState } from 'react';
-import Signup from '@/src/components/forms/Signup';
+import Signup from '@/components/forms/Signup';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const Page = () => {

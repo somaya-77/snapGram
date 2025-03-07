@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import { Button } from "../ui";
-import useGetUser from "@/src/hook/queries/users/useGetUsers";
+import useGetUser from "@/hook/queries/users/useGetUsers";
 import Image from "next/image";
 
 const ContainUserProfile = ({ id }: { id: string }) => {

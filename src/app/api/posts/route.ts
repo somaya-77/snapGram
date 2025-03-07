@@ -1,9 +1,9 @@
 import prisma from "../../../lib/db";
 import { Post } from '@prisma/client';
-import { INewPost } from "@/src/types";
-import { verifyToken } from "@/src/lib/verifyToken";
+import { INewPost } from "@/types";
+import { verifyToken } from "@/lib/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
-import { PostFormValidation } from "@/src/lib/validation";
+import { PostFormValidation } from "@/lib/validation";
 
 
 

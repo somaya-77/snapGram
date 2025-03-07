@@ -3,13 +3,13 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ProfileValidation } from "@/src/lib/validation";
-import { Loader } from "@/src/components/shared";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/src/components/ui/form";
-import ProfileUploader from "@/src/components/shared/ProfileUploader";
-import { Button, Input, Textarea } from "@/src/components/ui";
+import { ProfileValidation } from "@/lib/validation";
+import { Loader } from "@/components/shared";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import ProfileUploader from "@/components/shared/ProfileUploader";
+import { Button, Input, Textarea } from "@/components/ui";
 import { useParams, useRouter } from 'next/navigation';
-import { useGetProfile, usePutProfile } from "@/src/hook/queries";
+import { useGetProfile, usePutProfile } from "@/hook/queries";
 import { useEffect } from "react";
 import { toast } from 'react-toastify';
 

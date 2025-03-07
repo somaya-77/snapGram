@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import AuthLayout from '@/src/components/AuthLayout';
-import { ContentSaved } from '@/src/components/shared';
+import AuthLayout from '@/components/AuthLayout';
+import { ContentSaved } from '@/components/shared';
 
 const Saved = () => {
   return (

@@ -1,6 +1,6 @@
 "use client";
-import { DOMAIN } from "@/src/lib/constants";
-import { IUpdatePost } from "@/src/types";
+import { DOMAIN } from "@/lib/constants";
+import { IUpdatePost } from "@/types";
 import { useMutation, useQueryClient, UseMutationResult } from "@tanstack/react-query";
 import axios from "axios";
 

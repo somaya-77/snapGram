@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
-import AuthLayout from '@/src/components/AuthLayout';
-import { Content, PostsUser } from '@/src/components/shared';
+import AuthLayout from '@/components/AuthLayout';
+import { Content, PostsUser } from '@/components/shared';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 

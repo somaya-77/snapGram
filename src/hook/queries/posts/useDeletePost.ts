@@ -1,5 +1,5 @@
 "use client";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 

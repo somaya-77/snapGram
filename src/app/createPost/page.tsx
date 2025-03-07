@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import AuthLayout from '@/src/components/AuthLayout';
-import PostForm from '@/src/components/forms/PostForm';
+import AuthLayout from '@/components/AuthLayout';
+import PostForm from '@/components/forms/PostForm';
 
 const CreatePost = () => {
   return (

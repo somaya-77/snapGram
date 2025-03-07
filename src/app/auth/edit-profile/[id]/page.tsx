@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
-import AuthLayout from "@/src/components/AuthLayout";
-import UpdateUserForm from "@/src/components/forms/UpdateUserForm";
+import AuthLayout from "@/components/AuthLayout";
+import UpdateUserForm from "@/components/forms/UpdateUserForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Image from "next/image";
 

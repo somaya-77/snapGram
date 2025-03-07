@@ -1,10 +1,10 @@
 'use client'
 import { useState } from "react";
-import { IComments } from "@/src/types";
+import { IComments } from "@/types";
 import EditComment from "./EditComment";
 // import { useGetUser, useDeleteComment } from "@/src/hook/queries";
 import Image from "next/image";
-import { useGetUser } from "@/src/hook/queries";
+import { useGetUser } from "@/hook/queries";
 
 const Comments = ({ comments }: { comments: IComments[] }) => { // TODO
     

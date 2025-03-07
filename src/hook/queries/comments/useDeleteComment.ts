@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const deleteComment = async (id: number) => {

@@ -1,8 +1,8 @@
 import prisma from "../../../lib/db";
-import { IComments } from "@/src/types";
-import { verifyToken } from "@/src/lib/verifyToken";
+import { IComments } from "@/types";
+import { verifyToken } from "@/lib/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
-import { CommentValidation } from "@/src/lib/validation";
+import { CommentValidation } from "@/lib/validation";
 
 /**
  * @method  POST 

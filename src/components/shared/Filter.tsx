@@ -3,7 +3,7 @@ import {
     SelectContent,
     SelectItem,
     SelectTrigger,
-} from "@/src/components/ui/select"
+} from "@/components/ui/select"
 import { SelectValue } from "@radix-ui/react-select"
 
 

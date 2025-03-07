@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Loader from './Loader';
 import Image from 'next/image';
 import PostStats from './PostStats';
-import {useGetUser,useGetPosts,useSearchPosts} from '@/src/hook/queries';
+import {useGetUser,useGetPosts,useSearchPosts} from '@/hook/queries';
 
 type GridPostListProps = {
     searchQuery: string;

@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import { Button } from '../ui';
 import { useRouter } from "next/navigation";
-import { multiFormatDateString } from '@/src/lib/utils';
-import useDeletePost from '@/src/hook/queries/posts/useDeletePost';
+import { multiFormatDateString } from '@/lib/utils';
+import useDeletePost from '@/hook/queries/posts/useDeletePost';
 import Image from 'next/image';
 
 const ControlPost = ({ post, currentUser }: any) => {

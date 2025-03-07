@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image';
 import { useState } from 'react';
-import AuthLayout from '@/src/components/AuthLayout';
-import UpdatePostForm from '@/src/components/forms/UpdatePostForm';
+import AuthLayout from '@/components/AuthLayout';
+import UpdatePostForm from '@/components/forms/UpdatePostForm';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const EditPostPage = () => {

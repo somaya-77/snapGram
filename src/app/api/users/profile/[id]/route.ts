@@ -1,6 +1,6 @@
 import prisma from "../../../../../lib/db";
 import { NextRequest, NextResponse } from "next/server";
-import { verifyToken } from "@/src/lib/verifyToken";
+import { verifyToken } from "@/lib/verifyToken";
 import { User } from "@prisma/client";
 import bcrypt from 'bcrypt';
 
@@ -11,11 +11,11 @@ import bcrypt from 'bcrypt';
  * @access  private
  */
 
-export async function DELETE(request: NextRequest,{params}:{params: Promise<{ id: string }>}) {
-    const resolvedParams = await params; 
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     try {
-   
+
         const user = await prisma.user.findUnique({ where: { id }, include: { comment: true }, })
         if (!user) {
             return NextResponse.json({ message: "user not found!" }, { status: 404 });
@@ -54,8 +54,8 @@ export async function DELETE(request: NextRequest,{params}:{params: Promise<{ id
  */
 
 
-export async function GET(_: NextRequest, {params}:{params: Promise<{ id: string }>}) {
-    const resolvedParams = await params; 
+export async function GET(_: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     try {
         const user = await prisma.user.findUnique({
@@ -98,8 +98,8 @@ export async function GET(_: NextRequest, {params}:{params: Promise<{ id: string
  */
 
 
-export async function PUT(request: NextRequest, {params}:{params: Promise<{ id: string }>}) {
-    const resolvedParams = await params; 
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     try {
         const user = await prisma.user.findUnique({

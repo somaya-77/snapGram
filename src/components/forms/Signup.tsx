@@ -9,10 +9,10 @@ import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { text_fields_register } from "@/src/constants";
-import { SignupValidation } from "@/src/lib/validation";
-import { SignupValues } from "@/src/lib/validation/defaultValues";
-import useRegistration from "@/src/hook/queries/auth/useRegister";
+import { text_fields_register } from "@/constants";
+import { SignupValidation } from "@/lib/validation";
+import { SignupValues } from "@/lib/validation/defaultValues";
+import useRegistration from "@/hook/queries/auth/useRegister";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 
 const Signup = () => {

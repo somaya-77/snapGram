@@ -1,6 +1,6 @@
 'use client'
-import AuthLayout from '@/src/components/AuthLayout';
-import { Loader, GridPostList, Search } from '@/src/components/shared';
+import AuthLayout from '@/components/AuthLayout';
+import { Loader, GridPostList, Search } from '@/components/shared';
 import React, { useState } from 'react'
 
 const Explore = () => {

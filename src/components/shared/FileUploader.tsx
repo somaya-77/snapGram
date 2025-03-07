@@ -4,7 +4,7 @@ import { Button } from "../ui";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 
 
 const FileUploader = ({ field }) => {

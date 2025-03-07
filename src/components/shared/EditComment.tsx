@@ -6,9 +6,9 @@ import { Button, Input } from "../ui";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CommentValidation } from "@/src/lib/validation";
-import { useGetComment, usePutComment } from "@/src/hook/queries";
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/src/components/ui/form';
+import { CommentValidation } from "@/lib/validation";
+import { useGetComment, usePutComment } from "@/hook/queries";
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import Image from "next/image";
 
 const EditComment = ({ id, setOpen }: { id: string, setOpen: Dispatch<SetStateAction<boolean>>; }) => { // TODO

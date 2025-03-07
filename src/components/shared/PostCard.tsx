@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import Loader from './Loader';
 import Image from 'next/image';
-import { IPost } from '@/src/types';
+import { IPost } from '@/types';
 import PostStats from './PostStats';
-import { multiFormatDateString } from '@/src/lib/utils';
-import useGetUser from '@/src/hook/queries/users/useGetUsers';
-import useGetPosts from '@/src/hook/queries/posts/useGetPosts';
+import { multiFormatDateString } from '@/lib/utils';
+import useGetUser from '@/hook/queries/users/useGetUsers';
+import useGetPosts from '@/hook/queries/posts/useGetPosts';
 
 const PostCard = () => {
   const { data, isLoading } = useGetPosts();

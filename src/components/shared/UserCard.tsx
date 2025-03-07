@@ -3,9 +3,9 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '../ui';
 import Image from 'next/image';
-import { IUser } from '@/src/types';
+import { IUser } from '@/types';
 import { Loader } from 'lucide-react';
-import { useGetUser, useAllGetUsers } from '@/src/hook/queries';
+import { useGetUser, useAllGetUsers } from '@/hook/queries';
 
 const UserCard = () => {
     const userRegistration = useGetUser()

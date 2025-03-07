@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Button } from "@/src/components/ui";
-import AuthLayout from "@/src/components/AuthLayout";
+import { Button } from "@/components/ui";
+import AuthLayout from "@/components/AuthLayout";
 import { useParams, useRouter } from "next/navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { RelatedPosts, PostDetailsContent } from "@/src/components/shared";
+import { RelatedPosts, PostDetailsContent } from "@/components/shared";
 import Image from "next/image";
 
 const PostDetails = () => {

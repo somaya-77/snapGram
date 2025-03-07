@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 
 const fetchPostLikes = async (postId: number, userId: number) => {
     if (!postId || !userId) throw new Error("postId and userId are required");

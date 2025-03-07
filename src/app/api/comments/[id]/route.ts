@@ -1,6 +1,6 @@
 import prisma from "../../../../lib/db";
-import { UpdateComments } from "@/src/types";
-import { verifyToken } from "@/src/lib/verifyToken";
+import { UpdateComments } from "@/types";
+import { verifyToken } from "@/lib/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
 
 

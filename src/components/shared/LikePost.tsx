@@ -2,8 +2,8 @@
 import Loader from './Loader';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import useGetLikes from '@/src/hook/queries/like/useGetLikes';
-import usePostLike from '@/src/hook/queries/like/usePostLike';
+import useGetLikes from '@/hook/queries/like/useGetLikes';
+import usePostLike from '@/hook/queries/like/usePostLike';
 
 type Props = {
     postId: string;

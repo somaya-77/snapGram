@@ -1,5 +1,5 @@
-import AuthLayout from '@/src/components/AuthLayout';
-import UserCard from '@/src/components/shared/UserCard';
+import AuthLayout from '@/components/AuthLayout';
+import UserCard from '@/components/shared/UserCard';
 
 const Users = () => {
 

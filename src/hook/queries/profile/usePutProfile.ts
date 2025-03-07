@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
-import { IUpdateUser } from "@/src/types";
-import { DOMAIN } from "@/src/lib/constants";
+import { IUpdateUser } from "@/types";
+import { DOMAIN } from "@/lib/constants";
 import { useMutation, useQueryClient, UseMutationResult } from "@tanstack/react-query";
 
 const updateProfile = async ({ id, imageUrl, name, username, email, bio }: { id: string; imageUrl: string; name: string; username: string; email: string; bio: string }) => {

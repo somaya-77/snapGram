@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
-import { DOMAIN } from "@/src/lib/constants";
-import { UpdateComments } from "@/src/types";
+import { DOMAIN } from "@/lib/constants";
+import { UpdateComments } from "@/types";
 import { useMutation, useQueryClient, UseMutationResult } from "@tanstack/react-query";
 
 const updateComment = async ({ id, text }: { id: string; text: string; }) => {

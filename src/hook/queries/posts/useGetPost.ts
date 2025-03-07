@@ -1,6 +1,6 @@
 "use client";
-import { DOMAIN } from "@/src/lib/constants";
-import { IPost } from "@/src/types";
+import { DOMAIN } from "@/lib/constants";
+import { IPost } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 

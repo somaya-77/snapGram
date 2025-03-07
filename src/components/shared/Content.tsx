@@ -1,9 +1,9 @@
 'use client'
 import { useParams } from 'next/navigation';
-import { StatBlockProps } from '@/src/types';
-import { Loader } from '@/src/components/shared';
-import useGetProfile from '@/src/hook/queries/profile/useGetProfile';
-import ContainUserProfile from '@/src/components/shared/ContainUserProfile';
+import { StatBlockProps } from '@/types';
+import { Loader } from '@/components/shared';
+import useGetProfile from '@/hook/queries/profile/useGetProfile';
+import ContainUserProfile from '@/components/shared/ContainUserProfile';
 import Image from 'next/image';
 
 const StatBlock = ({ value, label }: StatBlockProps) => (

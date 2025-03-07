@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { INewUser } from "@/src/types";
+import { INewUser } from "@/types";
 import prisma from "../../../../lib/db";
-import { setCookie } from "@/src/lib/token";
+import { setCookie } from "@/lib/token";
 import { NextRequest, NextResponse } from "next/server";
-import { RegisterValidation } from "@/src/lib/validation";
+import { RegisterValidation } from "@/lib/validation";
 
 /**
  * @method  POST 

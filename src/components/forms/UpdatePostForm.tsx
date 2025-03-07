@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import { useRouter, useParams } from 'next/navigation';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PostFormValidation } from '@/src/lib/validation';
-import { usePutPost, useGetPost } from '@/src/hook/queries';
-import { Button, Input, Textarea } from '@/src/components/ui';
-import { FileUploader, Loader } from '@/src/components/shared';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/src/components/ui/form';
+import { PostFormValidation } from '@/lib/validation';
+import { usePutPost, useGetPost } from '@/hook/queries';
+import { Button, Input, Textarea } from '@/components/ui';
+import { FileUploader, Loader } from '@/components/shared';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 
 const UpdatePostForm = () => {

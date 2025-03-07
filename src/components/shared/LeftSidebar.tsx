@@ -1,10 +1,10 @@
 'use client'
 import Link from "next/link";
 import Image from "next/image";
-import { sidebarLinks } from "@/src/constants";
+import { sidebarLinks } from "@/constants";
 import { LinkSidBar, Loader, Logout } from "./";
-import useGetUser from "@/src/hook/queries/users/useGetUsers";
-import { useGetProfile } from "@/src/hook/queries";
+import useGetUser from "@/hook/queries/users/useGetUsers";
+import { useGetProfile } from "@/hook/queries";
 
 
 const LeftSidebar = () => {

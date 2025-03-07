@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Loader from './Loader';
 import Image from 'next/image';
-import useAllGetPosts from '@/src/hook/queries/users/useGetAllPosts';
+import useAllGetPosts from '@/hook/queries/users/useGetAllPosts';
 
 
 const Posts = ({ id }: { id: string }) => {

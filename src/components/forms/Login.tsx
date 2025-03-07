@@ -8,11 +8,11 @@ import { Button, Input } from "../ui";
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
-import {useLogin} from "@/src/hook/queries";
-import { text_fields } from "@/src/constants";
+import {useLogin} from "@/hook/queries";
+import { text_fields } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginValidation } from "@/src/lib/validation";
-import { LoginValues } from "@/src/lib/validation/defaultValues";
+import { LoginValidation } from "@/lib/validation";
+import { LoginValues } from "@/lib/validation/defaultValues";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 
 const Login = () => { 

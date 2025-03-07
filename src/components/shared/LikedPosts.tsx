@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Loader from "./Loader";
-import { IPost } from "@/src/types";
-import useGetLikesUser from "@/src/hook/queries/like/useGetLikesUser";
+import { IPost } from "@/types";
+import useGetLikesUser from "@/hook/queries/like/useGetLikesUser";
 import Image from "next/image";
 
 const LikedPosts = ({ id }: { id: string }) => {

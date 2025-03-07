@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { DOMAIN } from "@/src/lib/constants";
+import { DOMAIN } from "@/lib/constants";
 
 const fetchData = async ({ caption, location, imageUrl, tags }: { caption: string; location: string; imageUrl: string; tags: string[] }) => {
 

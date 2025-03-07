@@ -3,8 +3,8 @@
 import Loader from './Loader';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import useGetSaves from '@/src/hook/queries/save/useGetSave';
-import usePostSave from '@/src/hook/queries/save/usePostSave';
+import useGetSaves from '@/hook/queries/save/useGetSave';
+import usePostSave from '@/hook/queries/save/usePostSave';
 
 type Props = {
     postId: string;
