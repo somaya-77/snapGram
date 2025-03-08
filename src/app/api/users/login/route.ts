@@ -4,24 +4,8 @@ import { ILoginUser } from "@/types";
 import { setCookie } from "@/lib/token";
 import { LoginValidation } from "@/lib/validation";
 import { NextRequest, NextResponse } from "next/server";
-import Cors from 'cors';
 
-const cors = Cors({
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    origin: 'https://snap-gram-git-main-somayas-projects-92eaebb0.vercel.app', // النطاق المسموح له
-  });
   
-  function runCors(req: NextRequest, res: NextResponse, next: Function) {
-    cors(req, res, (result) => {
-      if (result instanceof Error) {
-        return res.status(500).json({ message: 'CORS Error' });
-      }
-      next();
-    });
-  }
-  
-
 /**
  * @method  POST 
  * @routs   ~/api/users/login
