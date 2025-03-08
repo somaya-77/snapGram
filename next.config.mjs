@@ -1,6 +1,8 @@
 // import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
+    output: "standalone",
     images: {
+        unoptimized: true,
         domains: ["res.cloudinary.com"],
         remotePatterns: [
             {
