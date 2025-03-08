@@ -44,9 +44,9 @@ export function setCookie(jwtPayload: JWTPayload): string {
     const cookie = serialize("jwtToken", token, {
         httpOnly: true,
         secure: isProduction, 
-        sameSite: isProduction ? "none" : "lax", 
+        sameSite: isProduction ? "none" : "lax",
         path: "/",
-        domain: isProduction ? "https://snapgram-social-media-app.netlify.app" : "localhost",
+        domain: isProduction ? "snapgram-social-media-app.netlify.app" : undefined,
         maxAge: 60 * 60 * 24 * 30, 
     });
 
