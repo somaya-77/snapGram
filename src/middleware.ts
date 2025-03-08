@@ -38,7 +38,7 @@ export function middleware(request: NextRequest) {
     const response = NextResponse.next();
 
     // إعدادات CORS (لضمان عمل الكوكيز عبر النطاقات)
-    response.headers.set("Access-Control-Allow-Origin", "https://snap-gram-nu.vercel.app");
+    response.headers.set("Access-Control-Allow-Origin", "https://snap-gram-git-main-somayas-projects-92eaebb0.vercel.app");
     response.headers.set("Access-Control-Allow-Credentials", "true");
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
