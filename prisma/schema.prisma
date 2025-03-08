@@ -1,11 +1,13 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 
 model User {
   id        Int      @id @default(autoincrement())
@@ -37,8 +39,8 @@ model Post {
   comment Comments[]
   Save    Save[]
   Like    Like[]
-  userId    Int       // Add userId field here
-  user      User      @relation(fields: [userId], references: [id])
+  userId  Int // Add userId field here
+  user    User       @relation(fields: [userId], references: [id])
 }
 
 model Like {
