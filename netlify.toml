@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[headers]]
+  for = "/api/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "https://snapgram-social-media-app.netlify.app"
+    Access-Control-Allow-Credentials = "true"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  
+    [build.environment]
+NODE_VERSION = "18"
+

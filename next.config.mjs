@@ -1,6 +1,26 @@
 // import { withSentryConfig } from "@sentry/nextjs";
 const nextConfig = {
-   
+    async headers() {
+        return [
+            {
+                source: "/api/:path*",
+                headers: [
+                    {
+                        key: "Access-Control-Allow-Origin",
+                        value: "https://snapgram-social-media-app.netlify.app",
+                    },
+                    {
+                        key: "Access-Control-Allow-Methods",
+                        value: "GET, POST, PUT, DELETE, OPTIONS",
+                    },
+                    {
+                        key: "Access-Control-Allow-Headers",
+                        value: "Content-Type, Authorization",
+                    },
+                ],
+            },
+        ];
+    },
     images: {
         remotePatterns: [
             {

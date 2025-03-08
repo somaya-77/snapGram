@@ -67,7 +67,9 @@ export async function POST(request: NextRequest) {
                 isAdmin: newUser.isAdmin,
                 imageUrl: newUser.imageUrl,
             }
-        }, { status: 201, headers: { "Set-Cookie": cookie } });
+        }, { status: 201,  headers: { 
+            "Set-Cookie": `${cookie}; SameSite=None; Secure` 
+        }  });
 
 
     } catch (error){
