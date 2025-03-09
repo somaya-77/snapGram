@@ -18,7 +18,7 @@ const PostsUser = () => {
             <div className="flex max-w-5xl w-full">
                 <Button
                     onClick={() => setShowPosts(true)}
-                    className="profile-tab rounded-l-lg" >
+                    className={`profile-tab rounded-l-lg  ${showPosts && "!bg-black"}`} >
                     <Image
                         src="/assets/icons/posts.svg"
                         alt="posts"
@@ -29,7 +29,7 @@ const PostsUser = () => {
                 </Button>
                 <Button
                     onClick={() => setShowPosts(false)}
-                    className="profile-tab rounded-r-lg">
+                    className={`profile-tab rounded-l-lg  ${!showPosts && "!bg-black"}`}>
                     <Image
                         src="/assets/icons/like.svg"
                         alt="like"

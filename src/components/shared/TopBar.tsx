@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logout from "./Logout";
-import { Button } from "../ui";
-
+import { useGetProfile, useGetUser } from "@/hook/queries";
 
 const TopBar = () => {
+  const user = useGetUser();
+  const id = user?.data?.id as string | undefined;
+  const userIdPromise = Promise.resolve({ userId: id });
+  const { data: profile } = useGetProfile(userIdPromise)
+
   return (
     <section className="topBar">
       <div className="flex-between py-4 px-5">
@@ -17,14 +21,11 @@ const TopBar = () => {
           />
         </Link>
 
-        <Logout />
-        <div className="flex gap-4">
-          <Button variant="ghost" className="shad_button_ghost">
-            <Image src="/assets/icons/logout.svg" alt="logout" width={50} height={50} />
-          </Button>
-          <Link href='' className="flex-center gap-3">
-            <Image src="/assets/images/profile.svg" alt='profile' width={50} height={50}
-            className="size-8 rounded-full"/>
+        <div className="flex gap-2">
+          <Logout />
+          <Link href={`/auth/profile/${profile?.id}`} className="flex-center gap-3">
+            <Image src={profile?.imageUrl ||'/assets/icons/profile-placeholder.svg'}  alt='profile' width={50} height={50}
+              className="size-8 rounded-full" />
           </Link>
         </div>
       </div>

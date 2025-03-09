@@ -7,6 +7,7 @@ import useAllGetPosts from '@/hook/queries/users/useGetAllPosts';
 
 const Posts = ({ id }: { id: string }) => {
     const { data: allPosts, isLoading } = useAllGetPosts(id);
+    console.log("ll",allPosts)
     return isLoading ? <Loader /> : <ul className="grid-container">
         {allPosts?.map((post) => (
             <li key={post.id} className="relative min-w-80 h-80">
@@ -24,7 +25,7 @@ const Posts = ({ id }: { id: string }) => {
                     <div className="flex items-center justify-start gap-2 flex-1">
                         <Image
                             src={
-                                post.imageUrl ||
+                                post.user.imageUrl ||
                                 "/assets/icons/profile-placeholder.svg"
                             }
                             alt="creator"

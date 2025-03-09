@@ -14,7 +14,7 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
             <main className='w-full md:flex'>
                 <TopBar />
                 <LeftSidebar />
-                <section className="flex flex-1 h-full">
+                <section className="flex flex-1 h-full mb-20">
                     {children}
                 </section>
                 <BottomBar />

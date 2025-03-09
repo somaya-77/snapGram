@@ -14,6 +14,7 @@ const LikePost = ({ postId, userId }: Props) => {
     const { mutate, isPending } = usePostLike();
     const { data } = useGetLikes(+postId, +userId);
     const [liked, setLiked] = useState(false);
+    const [likesCount, setLikesCount] = useState(0);
 
     const initialLiked = data?.initialLiked ?? false;
     const initialLikes = data?.initialLikes ?? 0;
@@ -21,6 +22,8 @@ const LikePost = ({ postId, userId }: Props) => {
     useEffect(() => {
         if (data) {
             setLiked(data.initialLiked);
+            setLikesCount((prev) => liked ? prev - 1 : prev + 1);
+            setLikesCount(data.initialLikes);
         }
     }, [data]);
 
@@ -41,7 +44,7 @@ const LikePost = ({ postId, userId }: Props) => {
                         className="cursor-pointer"
                         onClick={handleLike}
                     />
-                    <p className="small-medium lg:base-medium">{liked ? initialLikes : initialLikes}</p>
+                    <p className="small-medium lg:base-medium">{likesCount}</p>
                 </>
             )}
 
