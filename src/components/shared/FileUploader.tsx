@@ -5,11 +5,12 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import { DOMAIN } from "@/lib/constants";
+import Loader from "./Loader";
 
 
 const FileUploader = ({ field }) => {
   const [preview, setPreview] = useState<string | null>(null);
-
+  const [isUploading, setIsUploading] = useState(false);
   async function uploadImage(file: File) {
     const formData = new FormData();
     formData.append("file", file);
@@ -17,6 +18,7 @@ const FileUploader = ({ field }) => {
 
 
     try {
+      setIsUploading(true);
       const response = await fetch(`${DOMAIN}/api/upload`, {
         method: "POST",
         body: formData,
@@ -33,6 +35,8 @@ const FileUploader = ({ field }) => {
     } catch (error) {
       console.error("❌ خطأ في رفع الصورة:", error.message);
       return null;
+    } finally {
+      setIsUploading(false);
     }
   }
 
@@ -62,7 +66,7 @@ const FileUploader = ({ field }) => {
       }
     }
   }, [field]);
- 
+
 
   useEffect(() => {
     if (field.value) {
@@ -78,15 +82,52 @@ const FileUploader = ({ field }) => {
   });
 
   return (
+    // <div
+    //   {...getRootProps()}
+    //   className="flex flex-center flex-col bg-dark-3 rounded-xl cursor-pointer">
+    //   <input {...getInputProps()} onChange={handleFileChange} />
+    //   {isUploading && <Loader />}
+    //   {preview ? (
+    //     <>
+    //       <div className="flex flex-1 justify-center w-full p-5 lg:p-10">
+    //         <Image width={700} height={700} src={preview || ""} alt="image" className="file_uploader-img" />
+    //       </div>
+    //       <p className="file_uploader-label">Click or drag photo to replace</p>
+    //     </>
+    //   ) : (
+    //     <div className="file_uploader-box">
+    //       <Image
+    //         src="/assets/icons/file-upload.svg"
+    //         width={96}
+    //         height={77}
+    //         alt="file-upload"
+    //       />
+    //       <h3 className="base-medium text-light-2 mb-2 mt-6">Drag photo here</h3>
+    //       <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
+    //       <Button className="shad_button_dark_4">Select your photo</Button>
+    //     </div>
+    //   )}
+    // </div>
     <div
       {...getRootProps()}
-      className="flex flex-center flex-col bg-dark-3 rounded-xl cursor-pointer">
-      <input {...getInputProps()}  onChange={handleFileChange} />
+      className="flex flex-center flex-col bg-dark-3 rounded-xl cursor-pointer"
+    >
+      <input {...getInputProps()} onChange={handleFileChange} />
 
-      {preview ? (
+      {isUploading ? (
+        <div className="file_uploader-box">
+          <Loader />
+        </div>
+      ) : preview ? (
         <>
           <div className="flex flex-1 justify-center w-full p-5 lg:p-10">
-            <Image width={1000} height={1000} src={preview || ""} alt="image" className="file_uploader-img" />
+            <Image
+              width={1000}
+              height={1000}
+              src={preview || ""}
+              alt="image"
+              className="file_uploader-img"
+            />
           </div>
           <p className="file_uploader-label">Click or drag photo to replace</p>
         </>
@@ -104,6 +145,7 @@ const FileUploader = ({ field }) => {
         </div>
       )}
     </div>
+
   );
 };
 

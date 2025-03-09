@@ -63,7 +63,7 @@ export const text_fields_register = [
 
 export const post_fields = [
     {name: "caption", label: "Caption", type: "textarea", style: "shad-textarea custom-scrollbar",},
-    {name: "imageUrl", label: "Add Photos", type: "uploader", },
+    {name: "imageUrl", label: "Add Photo", type: "uploader", },
     {name: "location", label: "Add Location", type: "input", style: "shad-input",},
     // {name: "tags", label: "Add Tags", type: "input", style: "shad-input",},
 ]

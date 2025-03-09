@@ -5,11 +5,14 @@ import { IPost } from '@/types';
 import { Loader } from '@/components/shared';
 import useGetUser from '@/hook/queries/users/useGetUsers';
 import useGetSavesUser from '@/hook/queries/save/useGetSavesUser';
+import { useGetProfile } from '@/hook/queries';
 
 const ContentSaved = () => {
     const { data: user } = useGetUser()
     const { data: saves, isLoading } = useGetSavesUser(user?.id);
-
+    const id = user?.id as string | undefined;
+    const userIdPromise = Promise.resolve({ userId: id });
+    const { data: profile } = useGetProfile(userIdPromise)
     if (saves == undefined) {
         return <p>No saved posts yet!</p>
     }
@@ -21,8 +24,8 @@ const ContentSaved = () => {
                     <Image
                         src={save.imageUrl || ""}
                         alt="post"
-                        width={25}
-                        height={25}
+                        width={1000}
+                        height={1000}
                         className="h-full w-full object-cover"
                     />
                 </Link>
@@ -30,10 +33,7 @@ const ContentSaved = () => {
                 <div className="grid-post_user">
                     <div className="flex items-center justify-start gap-2 flex-1">
                         <Image
-                            src={
-                                save.imageUrl ||
-                                "/assets/icons/profile-placeholder.svg"
-                            }
+                            src={profile?.id === id ? profile?.imageUrl : "/assets/icons/profile-placeholder.svg"}
                             alt="creator"
                             className="rounded-full"
                             height={35}

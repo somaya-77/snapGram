@@ -11,7 +11,7 @@ const LeftSidebar = () => {
   const user = useGetUser();
   const id = user?.data?.id as string | undefined;
   const userIdPromise = Promise.resolve({ userId: id });
-  const { data: profile } = useGetProfile(userIdPromise)
+  const { data: profile,isLoading } = useGetProfile(userIdPromise)
   return (
     <nav className="leftSideBar">
       <div className="flex flex-col gap-11 ">
@@ -41,7 +41,7 @@ const LeftSidebar = () => {
 
 
           <div className="flex flex-col">
-            {profile ? <p className="body-bold">{profile.name} </p> : <Loader />}
+            {!isLoading ? <p className="body-bold">{profile?.name} </p> : <Loader />}
             <p className="small-regular text-light-3">
               {profile ? `@${profile.username}` : ''}
             </p>

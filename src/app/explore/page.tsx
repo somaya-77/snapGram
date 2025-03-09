@@ -23,11 +23,11 @@ const Explore = () => {
           <p className="text-light-4 mt-10 text-center w-full">End of posts</p>
         </div>
 
-        {!searchQuery && (
+        {/* {!searchQuery && (
           <div className="mt-10">
             <Loader />
           </div>
-        )}
+        )} */}
       </div>
     </AuthLayout>
   );

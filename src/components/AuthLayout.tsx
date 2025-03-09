@@ -7,14 +7,29 @@ import { useState } from "react";
 type Props = {
     children: React.ReactNode;
 };
+
+export const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            staleTime: Infinity,
+            gcTime: 1000 * 60 * 60,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+        },
+    },
+});
+
 const AuthLayout: React.FC<Props> = ({ children }) => {
-    const [queryClient] = useState(() => new QueryClient());
+
+   
+    // const [queryClient] = useState(() => new QueryClient());
     return (
         <QueryClientProvider client={queryClient}>
             <main className='w-full md:flex'>
                 <TopBar />
                 <LeftSidebar />
-                <section className="flex flex-1 h-full mb-20">
+                <section className="flex flex-1 h-full mb-20 md:mb-0">
                     {children}
                 </section>
                 <BottomBar />

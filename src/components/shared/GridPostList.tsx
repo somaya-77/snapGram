@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Loader from './Loader';
 import Image from 'next/image';
 import PostStats from './PostStats';
-import {useGetUser,useGetPosts,useSearchPosts} from '@/hook/queries';
+import {useGetUser,useGetPosts,useSearchPosts, useGetProfile} from '@/hook/queries';
 
 type GridPostListProps = {
     searchQuery: string;
@@ -13,6 +13,9 @@ const GridPostList = ({ searchQuery }: GridPostListProps) => {
     const { data, isLoading } = useGetPosts();
     const user = useGetUser()
     const searchData = useSearchPosts(searchQuery);
+    const id = user?.data?.id as string | undefined;
+    const userIdPromise = Promise.resolve({ userId: id });
+    const { data: profile } = useGetProfile(userIdPromise)
 
     const posts = searchData.data && searchData.data.length > 0 ? searchData.data : data;
     return (
@@ -21,8 +24,8 @@ const GridPostList = ({ searchQuery }: GridPostListProps) => {
                 <li key={post.id} className="relative min-w-80 h-80">
                     <Link href={`/posts/${post.id}`} className="grid-post_link">
                         <Image
-                        width={15}
-                        height={15}
+                        width={2000}
+                        height={2000}
                             src={post.imageUrl || ""}
                             alt="post"
                             className="h-full w-full object-cover"
@@ -33,7 +36,7 @@ const GridPostList = ({ searchQuery }: GridPostListProps) => {
                         <div className="flex items-center justify-start gap-2 flex-1">
                             <Image
                                 src={
-                                    post.imageUrl ||
+                                    profile?.id === post?.userId ? profile?.imageUrl :
                                     "/assets/icons/profile-placeholder.svg"
                                 }
                                 alt="creator"
