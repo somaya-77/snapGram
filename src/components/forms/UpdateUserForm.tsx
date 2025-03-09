@@ -18,7 +18,7 @@ const UpdateUserForm = () => {
   const route = useRouter();
   const params = useParams();
   const id = params?.id as string | undefined;
-  const userIdPromise = Promise.resolve({ userId: id });
+  const userIdPromise = id && Promise.resolve({ userId: id });
   const { data: profile } = useGetProfile(userIdPromise)
   const { mutate, isPending } = usePutProfile()
 

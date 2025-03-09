@@ -13,7 +13,7 @@ const Posts = ({ id }: { id: string }) => {
             <li key={post.id} className="relative min-w-80 h-80">
                 <Link href={`/posts/${post.id}`} className="grid-post_link">
                     <Image
-                        src={post.imageUrl || ""}
+                        src={post?.imageUrl || ""}
                         alt="post"
                         height={100}
                         width={100}
@@ -25,7 +25,7 @@ const Posts = ({ id }: { id: string }) => {
                     <div className="flex items-center justify-start gap-2 flex-1">
                         <Image
                             src={
-                                post.user.imageUrl ||
+                                post?.user?.imageUrl ||
                                 "/assets/icons/profile-placeholder.svg"
                             }
                             alt="creator"
