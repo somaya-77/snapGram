@@ -19,7 +19,7 @@ UpdateComments,
     return useMutation({
         mutationFn: updateComment,
         onSuccess: (_, { id, text }) => {
-            queryClient.invalidateQueries({ queryKey: ["commentUpdate", id, text] });
+            queryClient.invalidateQueries({ queryKey: ["comments", id, text] });
         },
         onError: (error) => {
             console.error("Update failed:", error);

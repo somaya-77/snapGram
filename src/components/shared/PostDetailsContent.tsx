@@ -9,7 +9,7 @@ const PostDetailsContent = ({ id }: { id: string }) => {
     const { data, isLoading, isError, error } = useGetPost(id);
     if (!id) return <p>Error: Invalid Post ID</p>;
     if (isError) return <p>Error: {error?.message}</p>;
-
+    console.log("details post: ", data)
     return isLoading || !data ? (
         <Loader />
     ) : (
@@ -21,9 +21,12 @@ const PostDetailsContent = ({ id }: { id: string }) => {
             </div>
 
             <CommentForm />
-            <Comments comments={data.comment} />
+            <Comments comments={data?.comment} />
         </>
     );
 }
 
-export default PostDetailsContent
+export default PostDetailsContent;
+
+
+

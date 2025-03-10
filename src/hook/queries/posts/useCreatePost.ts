@@ -10,14 +10,13 @@ const fetchData = async ({ caption, location, imageUrl, tags }: { caption: strin
     return response.data;
 };
 
-console.log("fetchData",fetchData)
 const useCreatePost = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
         mutationFn: fetchData,
         onSuccess: (_, { caption, location, imageUrl, tags }) => {
-            queryClient.invalidateQueries({ queryKey: ["createPost", caption, location, imageUrl, tags] });
+            queryClient.invalidateQueries({ queryKey: ["posts", caption, location, imageUrl, tags] });
         },
     });
 };

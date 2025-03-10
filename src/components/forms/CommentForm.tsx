@@ -59,7 +59,7 @@ const CommentForm = () => {
                         {isPending ? <Loader /> : (
                             <>
                                 <Image
-                                    src={"/assets/icons/edit.svg"}
+                                    src="/assets/icons/edit.svg"
                                     alt="add"
                                     width={20}
                                     height={20}

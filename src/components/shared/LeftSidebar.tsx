@@ -10,7 +10,8 @@ import { useGetProfile } from "@/hook/queries";
 const LeftSidebar = () => {
   const user = useGetUser();
   const id = user?.data?.id as string | undefined;
-  const { data: profile, isLoading } = useGetProfile(Promise.resolve({ userId: id }));  console.log("profile", profile)
+  const { data: profile, isLoading } = useGetProfile(Promise.resolve({ userId: id }));  
+  
   return (
     <nav className="leftSideBar">
       <div className="flex flex-col gap-11 ">

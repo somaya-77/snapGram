@@ -12,8 +12,9 @@ const useCreateComment = () => {
 
   return useMutation({
     mutationFn: createComment,
-    onSuccess: (_, {text, postId}) => {
-      queryClient.invalidateQueries({ queryKey: ["comments", text, postId] });
+    onSuccess: (_, {postId}) => {
+      // queryClient.invalidateQueries({ queryKey: ["comments", text, postId] });
+      queryClient.invalidateQueries({ queryKey: ["postDetails", String(postId)] });
     },
     onError: (error) => {
       console.error("Error creating comment:", error);
@@ -22,5 +23,6 @@ const useCreateComment = () => {
 };
 
 export default useCreateComment;
+
 
 

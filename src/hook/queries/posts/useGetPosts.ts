@@ -6,17 +6,15 @@ import axios from "axios";
 
 
 const fetchPosts = async (): Promise<IPost[]> => {
-    console.log("Fetching posts...");
     const response = await axios.get<IPost[]>(`${DOMAIN}/api/posts`);
-    console.log("Data received:", response.data);
-    console.log("API URL:", `${DOMAIN}/api/posts`);
-
     return response.data;
 }
 const useGetPosts = (): UseQueryResult<IPost[]> => {
     const query = useQuery({
         queryKey: ["posts"],
         queryFn: fetchPosts,
+        staleTime: 0,
+        gcTime: 0,
     })
     return query;
 }

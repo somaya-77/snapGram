@@ -29,7 +29,7 @@ const ControlPost = ({ post, currentUser }: any) => {
 
                 <Image
                     src={
-                        post.imageUrl ||
+                        post?.user?.imageUrl ||
                         "/assets/icons/profile-placeholder.svg"
                     }
                     alt="creator"

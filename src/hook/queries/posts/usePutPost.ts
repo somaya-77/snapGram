@@ -19,7 +19,7 @@ IUpdatePost,
     return useMutation({
         mutationFn: updatePost,
         onSuccess: (_, { id, caption, location, imageUrl, tags }) => {
-            queryClient.invalidateQueries({ queryKey: ["postUpdate", id, caption, location, imageUrl, tags] });
+            queryClient.invalidateQueries({ queryKey: ["posts", id, caption, location, imageUrl, tags] });
         },
         onError: (error) => {
             console.error("Update failed:", error);
