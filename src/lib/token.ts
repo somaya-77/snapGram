@@ -24,8 +24,8 @@ export function setCookie(jwtPayload: JWTPayload): string {
         secure: isProduction, 
         sameSite: isProduction ? "none" : "lax",
         path: "/",
-        domain: "http://localhost:3000" ,
-        // domain: isProduction ? "snapgram-social-media-app.netlify.app" : undefined,
+        // domain: "http://localhost:3000" ,
+        domain: isProduction ? "snapgram-social-media-app.netlify.app" : undefined,
         maxAge: 60 * 60 * 24 * 30, 
     });
 
