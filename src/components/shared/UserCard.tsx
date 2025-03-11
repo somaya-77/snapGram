@@ -10,7 +10,6 @@ import { useGetUser, useAllGetUsers } from '@/hook/queries';
 const UserCard = () => {
     const userRegistration = useGetUser()
     const { data, isLoading } = useAllGetUsers()
-
     return (
         <>
             {isLoading && !data ? (
@@ -26,8 +25,8 @@ const UserCard = () => {
                                         src={user.imageUrl || "/assets/icons/profile-placeholder.svg"}
                                         alt="creator"
                                         className="rounded-full"
-                                        width={48}
-                                        height={48}
+                                        width={60}
+                                        height={60}
                                     />
 
                                     <div className="flex-center flex-col gap-1">

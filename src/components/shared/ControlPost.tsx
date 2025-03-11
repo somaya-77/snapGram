@@ -24,7 +24,7 @@ const ControlPost = ({ post, currentUser }: any) => {
     return (
         <div className="flex-between w-full">
             <Link
-                href={`/profile/${post.id}`}
+                href={`/auth/profile/${post?.userId}`}
                 className="flex items-center gap-3">
 
                 <Image
@@ -34,8 +34,8 @@ const ControlPost = ({ post, currentUser }: any) => {
                     }
                     alt="creator"
                     className="lg:w-12 lg:h-12 rounded-full"
-                    width={8}
-                    height={8}
+                    width={500}
+                    height={500}
                 />
                 <div className="flex gap-1 flex-col">
                     <p className="base-medium lg:body-bold text-light-1">{post.caption}</p>

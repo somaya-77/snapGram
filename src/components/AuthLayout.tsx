@@ -11,11 +11,11 @@ type Props = {
 export const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            staleTime: Infinity,
+            staleTime: 1000 * 60 * 2,
             gcTime: 1000 * 60 * 60,
-            refetchOnMount: false,
-            refetchOnWindowFocus: false,
-            refetchOnReconnect: false,
+            refetchOnMount: "always", 
+            refetchOnWindowFocus: false, 
+            refetchOnReconnect: true, 
         },
     },
 });

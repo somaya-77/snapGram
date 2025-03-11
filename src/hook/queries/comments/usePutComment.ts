@@ -6,6 +6,7 @@ import { useMutation, useQueryClient, UseMutationResult } from "@tanstack/react-
 
 const updateComment = async ({ id, text }: { id: string; text: string; }) => {
     const response = await axios.put<UpdateComments>(`${DOMAIN}/api/comments/${id}`, { text });
+    // console.log("response.data",response.data)
     return response.data;
 };
 

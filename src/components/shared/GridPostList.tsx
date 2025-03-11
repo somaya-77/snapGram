@@ -6,7 +6,7 @@ import PostStats from './PostStats';
 import {useGetUser,useGetPosts,useSearchPosts, useGetProfile} from '@/hook/queries';
 
 type GridPostListProps = {
-    searchQuery: string;
+    searchQuery?: string;
 };
 
 const GridPostList = ({ searchQuery }: GridPostListProps) => {

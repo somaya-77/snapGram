@@ -58,8 +58,6 @@ const UpdateUserForm = () => {
   }, [profile, form]);
   
 
- 
-  console.log("profile",profile?.imageUrl)
   return (
     <Form {...form}>
       <form

@@ -28,7 +28,7 @@ const PostDetails = () => {
           </div>
 
           <PostDetailsContent id={id} />
-          <RelatedPosts />
+          {/* <RelatedPosts /> */}
         </div>
       </AuthLayout>
     </QueryClientProvider>

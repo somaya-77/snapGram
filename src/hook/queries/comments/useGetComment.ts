@@ -7,17 +7,18 @@ import axios from "axios";
 
 const fetchPost = async (id: string) => {
     const response = await axios.get<IComments>(`${DOMAIN}/api/comments/${id}`);
+    console.log("API Response:", response.data);
     return response.data;
 }
 const useGetComment = (id?: string) => {
     const query = useQuery({
-        queryKey: id ? ["comments",id] : [],
+        queryKey: id ? ["comments",id] : undefined,
         queryFn: () =>  fetchPost(id!), 
         enabled: !!id, 
-        // staleTime: 1000 * 60 * 1,
-        // refetchInterval: 1000 * 60 * 2,
     })
     return query;
 }
 
 export default useGetComment;
+
+

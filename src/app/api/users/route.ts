@@ -1,3 +1,4 @@
+
 import jwt from "jsonwebtoken";
 import prisma from "../../../lib/db";
 import { NextRequest, NextResponse } from "next/server";
@@ -29,6 +30,13 @@ export async function GET(request: NextRequest) {
                 email: true,
                 createdAt: true,
                 imageUrl: true,
+                Post: {
+                    include: {
+                        Like: true,
+                        Save: true,
+                    },
+                },
+
             },
         });
 

@@ -4,11 +4,12 @@ import { IComments, IPost } from "@/types";
 import EditComment from "./EditComment";
 // import { useGetUser, useDeleteComment } from "@/src/hook/queries";
 import Image from "next/image";
-import { useGetComments, useGetUser } from "@/hook/queries";
+import { useDeleteComment, useGetUser } from "@/hook/queries";
+import { toast } from "react-toastify";
 
 const Comments = ({ comments }: { comments: IComments[] }) => { 
 
-    // const { mutate } = useDeleteComment();
+    const { mutate, isPending } = useDeleteComment();
     const [open, setOpen] = useState(false);
     const [commentId, setCommentId] = useState(null);
     const { data } = useGetUser();
@@ -16,8 +17,16 @@ const Comments = ({ comments }: { comments: IComments[] }) => {
 
 
     const handleDelete = (id: number) => {
-        // mutate(id)
-    }
+        mutate(id, {
+            onSuccess: () => {
+                toast.success("Comment deleted successfully!");
+            },
+            onError: (error) => {
+                toast.error("Failed to delete comment.");
+                console.error(error);
+            },
+        });
+    };
     const handleEdit = (id: number) => {
         setCommentId(id)
         setOpen(true)
@@ -39,6 +48,7 @@ const Comments = ({ comments }: { comments: IComments[] }) => {
                                     </button>
                                     <button
                                         onClick={() => handleDelete(item.id)}
+                                        disabled={isPending}
                                     >
                                         <Image src="/assets/icons/delete.svg" alt="delete" width={20} height={20} />
                                     </button>

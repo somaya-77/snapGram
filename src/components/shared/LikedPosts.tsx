@@ -8,7 +8,7 @@ import Image from "next/image";
 
 const LikedPosts = ({ id }: { id: string }) => {
     const { data: likes, isLoading } = useGetLikesUser(id);
-
+console.log("likes", likes)
     if (!likes || likes.length === 0) {
         return <p>No liked posts yet!</p>
     }
@@ -17,8 +17,8 @@ const LikedPosts = ({ id }: { id: string }) => {
             <li key={like.id} className="relative min-w-80 h-80">
                 <Link href={`/posts/${like.id}`} className="grid-post_link">
                     <Image
-                        width={100}
-                        height={100}
+                        width={1500}
+                        height={1500}
                         src={like.imageUrl || ""}
                         alt="post"
                         className="h-full w-full object-cover"

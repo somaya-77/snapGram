@@ -34,7 +34,7 @@ export async function POST(request: Request) {
 
         const uploadResponse = await cloudinary.uploader.upload(base64Image, {
             folder: pathName,
-            transformation: [{ width: 200, height: 200, crop: "scale" }],
+            transformation: [{ width: 1500, height: 1500, crop: "scale" }],
             resource_type: "image",
         });
 

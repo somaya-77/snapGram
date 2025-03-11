@@ -28,8 +28,8 @@ const Content = () => {
                         <Image
                             src={profile?.imageUrl || "/assets/icons/profile-placeholder.svg"}
                             alt="profile"
-                            className="rounded-full object-cover object-top" width={150}
-                            height={150}
+                            className="rounded-full object-cover object-top" width={200}
+                            height={200}
                         />
 
                         <div className="flex flex-col flex-1 justify-between md:mt-2">

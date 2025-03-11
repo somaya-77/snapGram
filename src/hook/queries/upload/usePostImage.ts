@@ -7,7 +7,9 @@ const fetchData = async (imageFile: File) => {
     const formData = new FormData();
     formData.append("imageUrl", imageFile);
     formData.append("pathname", "profile_images");
-    console.log("🔍 Data sent to API:", formData.get("imageUrl"), formData.get("pathname"));
+
+    console.log("🔍 Data sent to API:", formData.get("file"), formData.get("pathName"));
+
     const response = await axios.post(`${DOMAIN}/api/upload`,
         formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -15,7 +17,7 @@ const fetchData = async (imageFile: File) => {
    const image = (await response.data) as {url: string}
     return image.url;
 };
-console.log("object", fetchData)
+
 const useUploadImage = () => {
     const queryClient = useQueryClient();
 

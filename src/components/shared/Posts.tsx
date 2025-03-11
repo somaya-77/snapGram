@@ -15,8 +15,8 @@ const Posts = ({ id }: { id: string }) => {
                     <Image
                         src={post?.imageUrl || ""}
                         alt="post"
-                        height={100}
-                        width={100}
+                        height={1000}
+                        width={1000}
                         className="h-full w-full object-cover"
                     />
                 </Link>

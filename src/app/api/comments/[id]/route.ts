@@ -19,8 +19,6 @@ export async function PUT(request: NextRequest,  {params}:{params: Promise<{ id:
         return NextResponse.json({ message: "ID parameter is missing" }, { status: 400 });
     }
     try {
-     
-   
         const commentById = await prisma.comments.findUnique({ where: { id} })
         const userFromToken = verifyToken(request);
 
@@ -85,3 +83,32 @@ export async function DELETE(request: NextRequest,  {params}:{params: Promise<{ 
     }
 }
 
+/**
+ * @method  GET
+ * @route   ~/api/comments/:id
+ * @desc    Get comment by ID
+ * @access  public 
+ */
+export async function GET(_: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
+    const id = parseInt(resolvedParams.id);
+
+    if (!id) {
+        return NextResponse.json({ message: "ID parameter is missing" }, { status: 400 });
+    }
+
+    try {
+        const comment = await prisma.comments.findUnique({
+            where: { id },
+        });
+
+        if (!comment) {
+            return NextResponse.json({ message: "Comment not found!" }, { status: 404 });
+        }
+
+        return NextResponse.json(comment, { status: 200 });
+    } catch (error) {
+        console.error("Error in GET request:", error);
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+    }
+}

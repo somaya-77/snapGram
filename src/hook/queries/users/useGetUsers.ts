@@ -14,10 +14,11 @@ const useGetUser = () => {
         queryKey: ["user"],
         queryFn: fetchUser,
         staleTime: Infinity,
-        gcTime: 1000 * 60 * 60,
-        refetchOnWindowFocus: false, 
-        refetchOnReconnect: false, 
-        refetchOnMount: false,
+        gcTime: 1000 * 60 * 6,
+        // gcTime: 1000 * 60 * 60,
+        // refetchOnWindowFocus: false, 
+        // refetchOnReconnect: false, 
+        // refetchOnMount: false,
     })
     if (!query.data && query.isSuccess) {
         queryClient.setQueryData(["user"], query.data);

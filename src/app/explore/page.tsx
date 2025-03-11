@@ -1,6 +1,6 @@
 'use client'
 import AuthLayout from '@/components/AuthLayout';
-import { Loader, GridPostList, Search } from '@/components/shared';
+import { GridPostList, Search } from '@/components/shared';
 import React, { useState } from 'react'
 
 const Explore = () => {
@@ -20,14 +20,8 @@ const Explore = () => {
 
         <div className="flex flex-wrap gap-9 w-full max-w-5xl">
           <GridPostList searchQuery={searchQuery} />
-          <p className="text-light-4 mt-10 text-center w-full">End of posts</p>
+          {/* <p className="text-light-4 mt-10 text-center w-full">End of posts</p> */}
         </div>
-
-        {/* {!searchQuery && (
-          <div className="mt-10">
-            <Loader />
-          </div>
-        )} */}
       </div>
     </AuthLayout>
   );
