@@ -1,9 +1,6 @@
-
-
 import jwt from "jsonwebtoken";
 import { JWTPayload } from "../types";
 import { serialize } from "cookie";
-
 
 export function generateJWT(jwtPayload: JWTPayload): string {
     const privateKey = process.env.JWT_SECRET as string;
@@ -13,21 +10,19 @@ export function generateJWT(jwtPayload: JWTPayload): string {
     });
 }
 
-
 export function setCookie(jwtPayload: JWTPayload): string {
     const token = generateJWT(jwtPayload);
 
-    const isProduction = process.env.NODE_ENV === "production";
-
     const cookie = serialize("jwtToken", token, {
         httpOnly: true,
-        secure: isProduction, 
-        sameSite: isProduction ? "none" : "lax",
+        secure: true, 
+        sameSite: "none",
         path: "/",
-        // domain: "http://localhost:3000" ,
-        domain: isProduction ? "snapgram-social-media-app.netlify.app" : undefined,
+        domain: ".snapgram-social-media-app.netlify.app",
         maxAge: 60 * 60 * 24 * 30, 
     });
-
     return cookie;
 }
+
+
+// const isProduction = process.env.NODE_ENV === "production";

@@ -11,8 +11,17 @@ import { NextApiRequest, NextApiResponse } from "next";
  */
 export async function POST() {
     try {
-        (await cookies()).delete("jwtToken"); 
+        // (await cookies()).delete("jwtToken"); 
+        const cookieStore = await cookies();
 
+        cookieStore.set("jwtToken", "", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/",
+            domain: "snapgram-social-media-app.netlify.app",
+            expires: new Date(0),  
+        });
         return NextResponse.json({ message: "Logged out successfully" }, { status: 200 });
     } catch (error) {
         console.error("Logout error:", error);
