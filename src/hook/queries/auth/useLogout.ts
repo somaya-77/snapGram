@@ -23,7 +23,7 @@ import { useMutation, useQueryClient  } from "@tanstack/react-query";
 import axios from "axios";
 import { DOMAIN } from "@/lib/constants";
 
-const logoutUser = async () => {
+const fetchLogoutUser = async () => {
     const response = await axios.post(`${DOMAIN}/api/users/logout`, {}, { withCredentials: true });
     return response.data;
 };
@@ -32,7 +32,7 @@ const useLogout = () => {
     const queryClient = useQueryClient(); 
 
     return useMutation({
-        mutationFn: logoutUser,
+        mutationFn: fetchLogoutUser,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["user"] }); 
         },
@@ -43,3 +43,13 @@ const useLogout = () => {
 };
 
 export default useLogout;
+
+export const logoutUser = async () => {
+    try {
+        const response = await axios.post(`${DOMAIN}/api/users/logout`, {}, { withCredentials: true });
+        return response.data;
+    } catch (error) {
+        console.error("Logout failed:", error);
+        throw new Error("Logout failed");
+    }
+};

@@ -38,8 +38,7 @@ const useDeleteComment = () => {
 
     return useMutation({
         mutationFn: deleteComment,
-        onSuccess: (data, variables) => {
-           
+        onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ["comments"] }); 
             console.log("Comment deleted successfully:", data);
         },
