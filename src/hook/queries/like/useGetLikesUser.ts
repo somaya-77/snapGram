@@ -14,7 +14,7 @@ export const fetchLikedPosts = async (userId: string) => {
 const useGetLikesUser = (userId: string) => {
 
     const query = useQuery({
-        queryKey: ["likedPosts", userId],
+        queryKey: ["postLikes", userId],
         queryFn: () => fetchLikedPosts(userId),
         // staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
     });

@@ -7,6 +7,7 @@ export const fetchPostLikes = async (postId: number, userId: number) => {
     
     const response = await axios.get(`${DOMAIN}/api/posts/like`, {
         params: { postId, userId },
+        withCredentials: true,
     });
 
     return response.data;
