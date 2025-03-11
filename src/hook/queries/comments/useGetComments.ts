@@ -17,7 +17,7 @@ const useGetComments = (postId: number, userId: number) => {
         queryKey: ["comments", postId, userId],
         queryFn: () => fetchPostLikes(postId, userId),
         enabled: !!postId && !!userId, 
-        refetchInterval: 3000,
+        // refetchInterval: 3000,
     });
 };
 

@@ -16,7 +16,7 @@ const useGetLikesUser = (userId: string) => {
     const query = useQuery({
         queryKey: ["likedPosts", userId],
         queryFn: () => fetchLikedPosts(userId),
-        staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
+        // staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
     });
     return query;
 }

@@ -16,7 +16,7 @@ const useGetSavesUser = (userId: string) => {
     const query = useQuery({
         queryKey: ["savedPosts", userId],
         queryFn: () => fetchSavedPosts(userId),
-        staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
+        // staleTime: 1000 * 60 * 5, // Cache data for 5 minutes
     });
     return query;
 }
