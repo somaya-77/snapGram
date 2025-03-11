@@ -8,11 +8,15 @@ import { useLogout } from '@/hook/queries';
 
 const Logout = () => {
     const router = useRouter();
-    const { refetch } = useLogout();
+    const { mutateAsync, isPending } = useLogout();
 
     const logoutAndRedirect = async () => {
-        await refetch();
-        router.replace('/auth/login');
+        try {
+            await mutateAsync(); 
+            router.replace("/auth/login"); 
+        } catch (error) {
+            console.error("Error during logout:", error);
+        }
     };
 
     return (

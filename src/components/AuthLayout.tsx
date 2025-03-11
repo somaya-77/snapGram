@@ -8,22 +8,22 @@ type Props = {
     children: React.ReactNode;
 };
 
-export const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            staleTime: 1000 * 60 * 2,
-            gcTime: 1000 * 60 * 60,
-            refetchOnMount: "always", 
-            refetchOnWindowFocus: false, 
-            refetchOnReconnect: true, 
-        },
-    },
-});
+// export const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             staleTime: 1000 * 60 * 2,
+//             gcTime: 1000 * 60 * 60,
+//             refetchOnMount: "always", 
+//             refetchOnWindowFocus: false, 
+//             refetchOnReconnect: true, 
+//         },
+//     },
+// });
 
 const AuthLayout: React.FC<Props> = ({ children }) => {
 
    
-    // const [queryClient] = useState(() => new QueryClient());
+    const [queryClient] = useState(() => new QueryClient());
     return (
         <QueryClientProvider client={queryClient}>
             <main className='w-full md:flex'>

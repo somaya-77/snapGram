@@ -1,5 +1,5 @@
 "use client";
-import { queryClient } from "@/components/AuthLayout";
+// import { queryClient } from "@/components/AuthLayout";
 import { DOMAIN } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -20,9 +20,9 @@ const useGetUser = () => {
         // refetchOnReconnect: false, 
         // refetchOnMount: false,
     })
-    if (!query.data && query.isSuccess) {
-        queryClient.setQueryData(["user"], query.data);
-      }
+    // if (!query.data && query.isSuccess) {
+    //     queryClient.setQueryData(["user"], query.data);
+    //   }
     return query;
 }
 
