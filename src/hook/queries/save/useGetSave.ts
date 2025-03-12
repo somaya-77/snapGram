@@ -6,7 +6,7 @@ import { Save } from "@/types";
 const fetchPostSaves = async (postId: number, userId: number) => {
     if (!postId || !userId) throw new Error("postId and userId are required");
     
-    const response = await axios.get<Save>(`${DOMAIN}/api/posts/save`, {
+    const response = await axios.get(`${DOMAIN}/api/posts/save`, {
         params: { postId, userId },
     });
 

@@ -6,7 +6,7 @@ import { Like } from "@/types";
 export const fetchPostLikes = async (postId: number, userId: number) => {
     if (!postId || !userId) throw new Error("postId and userId are required");
     
-    const response = await axios.get<Like>(`${DOMAIN}/api/posts/like`, {
+    const response = await axios.get(`${DOMAIN}/api/posts/like`, {
         params: { postId, userId },
         // withCredentials: true,
     });
