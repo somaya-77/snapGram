@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const protectedRoutes = ["/", "/users", "/explore", "/createPost", "/auth/profile", "/posts", "/PostDetails"];
+const protectedRoutes = ["/", "/users", "/explore", "/createPost", "/auth/profile", "/posts", "/PostDetails", "/saved"];
 const publicRoutes = ["/auth/login", "/auth/register"];
 
 export function middleware(request: NextRequest) {

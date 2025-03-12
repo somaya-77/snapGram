@@ -33,7 +33,7 @@ const Signup = () => {
         });
         toast.success("Your sign-up success");
         form.reset();
-        router.replace('/');
+        router.replace('/auth/login');
     }
 
     return (
