@@ -48,8 +48,6 @@ const [tagInput, setTagInput] = useState("");
         router.replace('/');
     };
 
-
-    console.log(form.formState.errors)
     return (
         <Form {...form}>
             <form

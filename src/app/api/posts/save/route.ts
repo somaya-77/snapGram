@@ -10,10 +10,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
     try {
-        console.log("Request received");
         const body = await request.json();
         const {userId, postId} = body;
-        console.log("Data received:", { userId, postId });
 
         const user = await prisma.user.findUnique({ where: { id: userId } });
         if (!user) {
@@ -51,7 +49,7 @@ export async function POST(request: NextRequest) {
                 post: true,
             }
         });
-        console.log("Save created:", save);
+        
         return NextResponse.json(save, { status: 201 });
     } catch (error) {
         return NextResponse.json({ message: "internal server error" }, { status: 500 })

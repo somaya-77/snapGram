@@ -16,13 +16,11 @@ export async function POST(request: Request) {
         if (!image) {
             return Response.json({ error: "No file provided" }, { status: 400 });
         }
- 
 
-      
         const MAX_SIZE = 5 * 1024 * 1024;
         if (image.size > MAX_SIZE) {
             return Response.json(
-                { error: "الصوره حجمها اكبر من 5 ميجا" },
+                { error: "the image is biggest" },
                 { status: 400 },
             );
         }
@@ -38,14 +36,12 @@ export async function POST(request: Request) {
             resource_type: "image",
         });
 
-        console.log("✅ Cloudinary Response:", uploadResponse);
         return Response.json({ url: uploadResponse.secure_url });
     } catch (error: any) {
-        console.error("❌ Full Error Details:", error);
         return Response.json(
             {
-                error: "فشل في رفع الصورة",
-                message: error.message || "حدث خطأ غير متوقع",
+                error: "Failed upload image",
+                message: error.message || "Error no excepted",
             },
             { status: 500 },
         );

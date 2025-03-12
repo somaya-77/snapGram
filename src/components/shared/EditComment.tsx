@@ -1,22 +1,19 @@
 'use client'
 import z from "zod";
 import Loader from "./Loader";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import Image from "next/image";
 import { Button, Input } from "../ui";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { CommentValidation } from "@/lib/validation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { useGetComment, usePutComment } from "@/hook/queries";
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import Image from "next/image";
 
 const EditComment = ({ id, setOpen }: { id: string, setOpen: Dispatch<SetStateAction<boolean>>; }) => { 
     const { mutate, isPending } = usePutComment();
     const { data: commentData } = useGetComment(id);
-
-    console.log("id",id)
-    console.log("commentData",commentData)
 
     const form = useForm<z.infer<typeof CommentValidation>>({
         resolver: zodResolver(CommentValidation),

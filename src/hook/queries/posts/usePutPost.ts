@@ -1,8 +1,8 @@
 "use client";
+import axios from "axios";
 import { DOMAIN } from "@/lib/constants";
 import { IUpdatePost } from "@/types";
 import { useMutation, useQueryClient, UseMutationResult } from "@tanstack/react-query";
-import axios from "axios";
 
 const updatePost = async ({ id, caption, location, imageUrl, tags }: { id: string; caption: string; location: string; imageUrl: string; tags: string[]}) => {
     const response = await axios.put<IUpdatePost>(`${DOMAIN}/api/posts/${id}`, { caption, location, imageUrl, tags });

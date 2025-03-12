@@ -13,8 +13,6 @@ const Comments = ({ comments }: { comments: IComments[] }) => {
     const [open, setOpen] = useState(false);
     const [commentId, setCommentId] = useState(null);
     const { data } = useGetUser();
-    console.log("comments", comments)
-
 
     const handleDelete = (id: number) => {
         mutate(id, {
@@ -23,7 +21,6 @@ const Comments = ({ comments }: { comments: IComments[] }) => {
             },
             onError: (error) => {
                 toast.error("Failed to delete comment.");
-                console.error(error);
             },
         });
     };

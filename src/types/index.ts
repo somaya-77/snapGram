@@ -19,9 +19,7 @@ export type IUpdateUser = {
 };
 
 export type INewPost = {
-  // userId: string;
   caption: string;
-  // file?: File[];
   imageUrl: string;
   location?: string;
   tags?: { id: number; name: string }[];

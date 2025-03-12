@@ -33,8 +33,8 @@ const Login = () => {
         {
             onSuccess: () => {
                 toast.success("Your login success");
-                form.reset();
                 router.replace('/');
+                form.reset();
             }
         });
     }

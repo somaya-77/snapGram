@@ -25,7 +25,7 @@ const UserInfo = ({ post }: { post: IPost }) => {
             </div>
 
             <div className="w-full">
-                {currentUser.data.id === post.userId ? '' : <PostStats postId={post.id} userId={post.userId} />}
+                {currentUser.data.id === post.userId ? '' : <PostStats like={post?.Like} save={post?.Save} postId={post.id} userId={post.userId} />}
             </div>
         </div>
     )

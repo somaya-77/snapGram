@@ -41,7 +41,6 @@ export async function PUT(request: NextRequest,  {params}:{params: Promise<{ id:
 
         return NextResponse.json(comment, { status: 200 });
     } catch (error){
-        console.error("Error in PUT request:", error); 
         return NextResponse.json({ message: "internal server error" }, { status: 500 })
     }
 }
@@ -108,7 +107,6 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ id: st
 
         return NextResponse.json(comment, { status: 200 });
     } catch (error) {
-        console.error("Error in GET request:", error);
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }

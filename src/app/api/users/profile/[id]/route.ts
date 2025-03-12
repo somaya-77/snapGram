@@ -20,9 +20,6 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
         if (!user) {
             return NextResponse.json({ message: "user not found!" }, { status: 404 });
         }
-
-        // check same account by token
-
         const userFromToken = verifyToken(request);
 
         if (userFromToken !== null && userFromToken.id === user.id) {
@@ -35,6 +32,8 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
             await prisma.comments.deleteMany({
                 where: { id: { in: commentIds } }
             })
+
+            await prisma.user.delete({ where: { id } });
             return NextResponse.json({ message: "your profile has been deleted" }, { status: 200 });
         }
         return NextResponse.json({ message: "only user himself can delete his profile, forbidden" }, { status: 203 });
@@ -76,13 +75,6 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ id: st
         if (!user) {
             return NextResponse.json({ message: "user not found!" }, { status: 404 });
         }
-
-        // check same account by token
-        // const userFromToken = verifyToken(request);
-
-        // if (userFromToken === null || userFromToken.id !== user.id) {
-        //     return NextResponse.json({ message: "your are not allowed, access denied" }, { status: 403 });
-        // }
 
         return NextResponse.json(user, { status: 200 });
     } catch {

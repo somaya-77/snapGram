@@ -13,8 +13,6 @@ import { CommentValidation } from "@/lib/validation";
 
 export async function POST(request: NextRequest) {
     try {
-
-        console.log("req", request)
         const userFromToken = verifyToken(request);
 
         if (!userFromToken) {
@@ -30,8 +28,6 @@ export async function POST(request: NextRequest) {
         if(!validation.success) {
             return NextResponse.json({ message: validation.error.errors[0].message }, { status: 500 })
         }
-
-
 
         const comment = await prisma.comments.create({
             data: {

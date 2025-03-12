@@ -5,17 +5,19 @@ import { useRouter } from "next/navigation";
 import { multiFormatDateString } from '@/lib/utils';
 import useDeletePost from '@/hook/queries/posts/useDeletePost';
 import Image from 'next/image';
+import Loader from './Loader';
+import { toast } from 'react-toastify';
 
 const ControlPost = ({ post, currentUser }: any) => {
     const router = useRouter();
     const postId = post?.userId;
     const userId = currentUser.data.id;
-    const { mutate: deletePost } = useDeletePost();
+    const { mutate: deletePost, isPending } = useDeletePost();
 
     const handleDelete = () => {
         deletePost(post.id, {
             onSuccess: () => {
-                alert("Post deleted successfully!");
+                toast.success("Post deleted successfully!");
                 router.push("/");
             },
         });
@@ -56,7 +58,7 @@ const ControlPost = ({ post, currentUser }: any) => {
                     variant="ghost"
                     className={`${postId !== userId && "hidden"}`}
                 >
-                    <Image src={"/assets/icons/delete.svg"} alt="delete" width={24} height={24} />
+                   {isPending ? <Loader /> : <Image src={"/assets/icons/delete.svg"} alt="delete" width={24} height={24} />}
                 </Button>
             </div>
         </div>
