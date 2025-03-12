@@ -1,16 +1,16 @@
 import { DOMAIN } from "@/lib/constants";
 import { Save } from "@/types";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import axios from "axios";
 
-export const fetchSavedPosts = async (userId: string) => {
-    const response = await axios.get(`${DOMAIN}/api/posts/save/${userId}`);
+export const fetchSavedPosts = async (userId: string): Promise<Save[]> => {
+    const response = await axios.get<Save[]>(`${DOMAIN}/api/posts/save/${userId}`);
 
     return response.data;
 };
 
 
-const useGetSavesUser = (userId: string) => {
+const useGetSavesUser = (userId: string): UseQueryResult<Save[]> => {
 
     const query = useQuery({
         queryKey: ["postSaves", userId],
