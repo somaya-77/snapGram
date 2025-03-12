@@ -1,5 +1,5 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { DOMAIN } from "@/lib/constants";
 
@@ -11,28 +11,28 @@ const fetchData = async (userId: string) => {
 
 const useGetProfile = (userId?: Promise<{ userId: string; }>) => { 
   const resolvedUserId = userId ? userId.then((result) => result.userId) : undefined;
-
+  const queryClient = useQueryClient();
   const { data, error, isLoading } = useQuery({
-    queryKey: ["profile", resolvedUserId], 
-    queryFn:  async () => {
-      const resolved = await resolvedUserId; 
-      if (resolved) {
-        return fetchData(resolved); 
-      }
-      return Promise.reject(new Error("UserId is not defined"));
+    queryKey: ["profile", resolvedUserId],
+    queryFn: async () => {
+        const resolved = await resolvedUserId;
+        if (resolved) {
+            return fetchData(resolved);
+        }
+        return Promise.reject(new Error("UserId is not defined"));
     },
     enabled: !!resolvedUserId,
-    // staleTime: Infinity,
-    // gcTime: 1000 * 60 * 60,
-    // refetchOnWindowFocus: false,
-    // refetchOnReconnect: false,
-    // refetchOnMount: false,
-    staleTime: 0,
-    gcTime: 0,
-    refetchInterval: 20000,
-  });
+    staleTime: 1000 * 60 * 2, 
+    gcTime: 1000 * 60 * 60, 
+    refetchOnMount: "always", 
+    refetchOnReconnect: true, 
+});
 
-  return { data, error, isLoading };
+const refetchProfile = () => {
+    queryClient.invalidateQueries({ queryKey: ["profile", resolvedUserId] });
+};
+
+return { data, error, isLoading, refetchProfile };
 };
 
 export default useGetProfile;

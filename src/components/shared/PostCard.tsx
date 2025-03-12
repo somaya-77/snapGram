@@ -19,7 +19,6 @@ const PostCard = () => {
       ) : (
         <ul className="flex flex-col flex-1 gap-9 w-full">
           {data?.map((post: IPost) => {
-            console.log("post",post)
             return (
               <li key={post.id} className="flex justify-center w-full">
                 <div className="post-card">

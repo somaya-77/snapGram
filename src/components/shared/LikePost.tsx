@@ -1,4 +1,3 @@
-
 "use client";
 import Loader from "./Loader";
 import Image from "next/image";
@@ -15,17 +14,17 @@ type Props = {
 const LikePost = ({ postId, userId, like }: Props) => {
     const { mutate, isPending } = usePostLike();
     const registration = useGetUser()
-   console.log("like", like)
+    const userIds = like?.map((el) => el.userId) || []; 
+    const isLiked = userIds.includes(registration?.data.id); 
 
     const handleLike = () => {
         mutate(
             { postId, userId },
         );
     };
-    const userIds = like?.map((el) => el.userId) || []; 
-    const isLiked = userIds.includes(registration?.data.id); 
+
     if (isPending) return <Loader />;
-   
+
     return (
         <div className="flex gap-2 mr-5">
             {isPending ? (
@@ -49,15 +48,4 @@ const LikePost = ({ postId, userId, like }: Props) => {
 
 export default LikePost;
 
- // const [liked, setLiked] = useState(false);
-    // const [likesCount, setLikesCount] = useState(0);
-    // const { data, isLoading, error } = useGetLikes(+postId, +userId);
-    // const initialLiked = data?.initialLiked ?? false;
-    // const initialNum = data?.initialLikes ?? 0;
-    
-    // useEffect(() => {
-    //     if (data) {
-    //         setLiked(data.initialLiked);
-    //         setLikesCount(data.initialLikes);
-    //     }
-    // }, [data]);
+
