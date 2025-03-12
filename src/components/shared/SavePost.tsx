@@ -15,10 +15,10 @@ const SavePost = ({ postId, userId }: Props) => {
     const [saved, setSaved] = useState(false);
     const { data, isLoading } = useGetSaves(+postId, +userId);
     const initialSaved = data?.initialSaved ?? false;
-
+    
     useEffect(() => {
         if (data) {
-            setSaved(data.initialLiked);
+            setSaved(data.initialSaved);
         }
     }, [data]);
 

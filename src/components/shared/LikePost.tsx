@@ -74,14 +74,16 @@ type Props = {
 
 const LikePost = ({ postId, userId }: Props) => {
     const { mutate, isPending } = usePostLike();
-    const { data, isLoading, error } = useGetLikes(Number(postId), Number(userId)); 
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
-
+    const { data, isLoading, error } = useGetLikes(+postId, +userId);
+    const initialLiked = data?.initialLiked ?? false;
+    const initialNum = data?.initialLikes ?? 0;
+    
     useEffect(() => {
         if (data) {
-            setLiked(data.initialLiked ?? false);
-            setLikesCount(data.initialLikes ?? 0);
+            setLiked(data.initialLiked);
+            setLikesCount(data.initialLikes);
         }
     }, [data]);
 
@@ -90,14 +92,14 @@ const LikePost = ({ postId, userId }: Props) => {
         setLiked(newLiked);
         setLikesCount((prev) => (newLiked ? prev + 1 : prev - 1));
         mutate(
-            { postId, userId }, 
-            {
-                onError: (error) => {
-                    setLiked(liked);
-                    setLikesCount((prev) => (liked ? prev + 1 : prev - 1));
-                    console.error("Like mutation error:", error);
-                },
-            }
+            { postId, userId },
+            // {
+            //     onError: (error) => {
+            //         setLiked(liked);
+            //         setLikesCount((prev) => (liked ? prev + 1 : prev - 1));
+            //         console.error("Like mutation error:", error);
+            //     },
+            // }
         );
     };
 
@@ -111,14 +113,14 @@ const LikePost = ({ postId, userId }: Props) => {
             ) : (
                 <>
                     <Image
-                        src={liked ? "/assets/icons/liked.svg" : "/assets/icons/like.svg"}
+                        src={liked || initialLiked ? "/assets/icons/liked.svg" : "/assets/icons/like.svg"}
                         alt="like"
                         width={20}
                         height={20}
                         className="cursor-pointer"
                         onClick={handleLike}
                     />
-                    <p className="small-medium lg:base-medium">{likesCount}</p>
+                    <p className="small-medium lg:base-medium">{likesCount} : {initialNum}</p>
                 </>
             )}
         </div>
@@ -127,18 +129,18 @@ const LikePost = ({ postId, userId }: Props) => {
 
 export default LikePost;
 
-    // const initialLiked = data?.initialLiked ?? false;
+// const initialLiked = data?.initialLiked ?? false;
 
 
-    // useEffect(() => {
-    //     if (data) {
-    //         setLiked(data.initialLiked);
-    //         setLikesCount((prev) => liked ? prev - 1 : prev + 1);
-    //         setLikesCount(data.initialLikes);
-    //     }
-    // }, [data]);
+// useEffect(() => {
+//     if (data) {
+//         setLiked(data.initialLiked);
+//         setLikesCount((prev) => liked ? prev - 1 : prev + 1);
+//         setLikesCount(data.initialLikes);
+//     }
+// }, [data]);
 
-    // const handleLike = () => {
-    //     setLiked((prev) => !prev);
-    //     mutate({ postId, userId });
-    // };
+// const handleLike = () => {
+//     setLiked((prev) => !prev);
+//     mutate({ postId, userId });
+// };
