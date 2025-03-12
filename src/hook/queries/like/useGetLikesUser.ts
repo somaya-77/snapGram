@@ -1,7 +1,8 @@
+import { DOMAIN } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 
 export const fetchLikedPosts = async (userId: string) => {
-    const response = await fetch(`/api/posts/like/${userId}`);
+    const response = await fetch(`${DOMAIN}/api/posts/like/${userId}`);
 
     if (!response.ok) {
         throw new Error("Failed to fetch liked posts");

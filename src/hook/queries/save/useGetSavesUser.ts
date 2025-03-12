@@ -1,7 +1,8 @@
+import { DOMAIN } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 
 export const fetchSavedPosts = async (userId: string) => {
-    const response = await fetch(`/api/posts/save/${userId}`);
+    const response = await fetch(`${DOMAIN}/api/posts/save/${userId}`);
 
     if (!response.ok) {
         throw new Error("Failed to fetch saved posts");

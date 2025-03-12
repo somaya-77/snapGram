@@ -104,7 +104,6 @@ const LikePost = ({ postId, userId }: Props) => {
     };
 
     if (isLoading) return <Loader />;
-    if (error) return <div>Error loading likes</div>;
 
     return (
         <div className="flex gap-2 mr-5">
@@ -120,7 +119,7 @@ const LikePost = ({ postId, userId }: Props) => {
                         className="cursor-pointer"
                         onClick={handleLike}
                     />
-                    <p className="small-medium lg:base-medium">{likesCount} : {initialNum}</p>
+                    <p className="small-medium lg:base-medium">{likesCount}</p>
                 </>
             )}
         </div>
