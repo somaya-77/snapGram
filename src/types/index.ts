@@ -106,7 +106,7 @@ export interface Save {
   postId: number;
 }
 
-interface Like {
+export interface Like {
   id: number;
   userId: number;
   postId: number;

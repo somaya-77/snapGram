@@ -1,14 +1,10 @@
 import { DOMAIN } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
-
+import axios from "axios";
+import { Like } from "@/types";
 export const fetchLikedPosts = async (userId: string) => {
-    const response = await fetch(`${DOMAIN}/api/posts/like/${userId}`);
-
-    if (!response.ok) {
-        throw new Error("Failed to fetch liked posts");
-    }
-
-    return response.json();
+    const response = await axios.get<Like>(`${DOMAIN}/api/posts/like/${userId}`);
+    return response.data;
 };
 
 
