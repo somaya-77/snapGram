@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const fetchSavedPosts = async (userId: string) => {
-    const response = await axios.get<Save>(`${DOMAIN}/api/posts/save/${userId}`);
+    const response = await axios.get(`${DOMAIN}/api/posts/save/${userId}`);
 
     return response.data;
 };

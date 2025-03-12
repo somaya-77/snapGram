@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Like } from "@/types";
 export const fetchLikedPosts = async (userId: string) => {
-    const response = await axios.get<Like>(`${DOMAIN}/api/posts/like/${userId}`);
+    const response = await axios.get(`${DOMAIN}/api/posts/like/${userId}`);
     return response.data;
 };
 
