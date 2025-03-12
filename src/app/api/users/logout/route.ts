@@ -17,6 +17,7 @@ export async function POST() {
             secure: true,
             sameSite: "none",
             path: "/",
+            // domain: "localhost",
             domain: "snapgram-social-media-app.netlify.app",
             expires: new Date(0),  
         });
@@ -25,14 +26,3 @@ export async function POST() {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 }
-
-
-// export async function POST(req: NextApiRequest, res: NextApiResponse) {
-
-//     try {
-//         res.setHeader("Set-Cookie", "jwtToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly");
-//         return res.status(200).json({ message: "Logged out successfully" });
-//     } catch (error) {
-//         return res.status(500).json({ message: "Internal server error" });
-//     }
-// }

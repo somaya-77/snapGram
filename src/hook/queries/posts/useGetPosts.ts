@@ -15,7 +15,7 @@ const useGetPosts = (): UseQueryResult<IPost[]> => {
         queryFn: fetchPosts,
         staleTime: 0,
         gcTime: 0,
-        refetchInterval: 1000,
+        refetchInterval: 500,
     })
     return query;
 }

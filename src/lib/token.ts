@@ -18,6 +18,7 @@ export function setCookie(jwtPayload: JWTPayload): string {
         secure: true, 
         sameSite: "none",
         path: "/",
+        // domain: "localhost",
         domain: ".snapgram-social-media-app.netlify.app",
         maxAge: 60 * 60 * 24 * 30,  
     });

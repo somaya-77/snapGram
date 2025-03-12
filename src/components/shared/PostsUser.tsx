@@ -6,7 +6,7 @@ import { useState } from 'react';
 import LikedPosts from './LikedPosts';
 import { useParams } from 'next/navigation';
 import Posts from './Posts';
-import { useAllGetUsers } from '@/hook/queries';
+
 
 
 const PostsUser = () => {

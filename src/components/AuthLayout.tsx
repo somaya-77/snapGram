@@ -34,7 +34,7 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
                 </section>
                 <BottomBar />
             </main>
-            <ReactQueryDevtools />
+            {/* <ReactQueryDevtools /> */}
         </QueryClientProvider>
     )
 }

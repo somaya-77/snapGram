@@ -20,6 +20,7 @@ const Content = () => {
         resolve({ userId: id });
     });
     const { data: profile, isLoading } = useGetProfile(profileId);
+    
     return (
         <>
             {isLoading ? <Loader /> : (

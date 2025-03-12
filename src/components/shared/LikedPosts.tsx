@@ -8,10 +8,7 @@ import Image from "next/image";
 
 const LikedPosts = ({ id }: { id: string }) => {
     const { data: likes, isLoading } = useGetLikesUser(id);
-console.log("likes", likes)
-    if (!likes || likes.length === 0) {
-        return <p>No liked posts yet!</p>
-    }
+
     return isLoading ? <Loader /> : <ul className="grid-container">
         {likes?.map((like: IPost) => (
             <li key={like.id} className="relative min-w-80 h-80">
