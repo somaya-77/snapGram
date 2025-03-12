@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useDeleteComment, useGetUser } from "@/hook/queries";
 import { toast } from "react-toastify";
 
-const Comments = ({ comments }: { comments: IComments[] }) => { 
+const Comments = ({ comments }: { comments: IComments[] }) => {
 
     const { mutate, isPending } = useDeleteComment();
     const [open, setOpen] = useState(false);
@@ -31,10 +31,15 @@ const Comments = ({ comments }: { comments: IComments[] }) => {
     return (
         <div className="w-full max-w-5xl">
             {comments?.length > 0 ? <ul className="py-2 px-5 flex flex-col gap-1 mt-4 border border-dark-4 xl:rounded-l-[24px] bg-dark-2 rounded-[20px] w-full max-w-5xl">
+                
                 {comments.map((item) => (
                     <li key={item.id} className="text-light-3 small-regular border-b border-dark-4/80 pb-2  last:border-none">
                         <div className="flex justify-between py-2">
-                            <span className="text-lg">{item.text}</span>
+
+                            <div className="flex flex-col">
+                                <span className="text-lg text-white">@{item.user.username}</span>
+                                <span className="text-lg">{item.text}</span>
+                            </div>
 
                             {item?.userId === data.id && (
                                 <div className="flex gap-6">
@@ -54,9 +59,9 @@ const Comments = ({ comments }: { comments: IComments[] }) => {
                         </div>
                     </li>
                 )
-            )}
+                )}
             </ul> : null}
-            {open && <EditComment id={commentId} setOpen={setOpen}/>}
+            {open && <EditComment id={commentId} setOpen={setOpen} />}
         </div>
 
     );

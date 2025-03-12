@@ -94,6 +94,7 @@ export interface IComments {
   text: string;
   postId: number;
   userId?: IUser;
+  user?:IUser;
 
 }
 

@@ -9,7 +9,7 @@ const PostDetailsContent = ({ id }: { id: string }) => {
     const { data, isLoading, isError, error } = useGetPost(id);
     if (!id) return <p>Error: Invalid Post ID</p>;
     if (isError) return <p>Error: {error?.message}</p>;
-   
+   console.log("data", data)
     return isLoading || !data ? (
         <Loader />
     ) : (
