@@ -46,7 +46,7 @@ const GridPostList = ({ searchQuery }: GridPostListProps) => {
                             />
                             <p className="line-clamp-1">{post.caption}</p>
                         </div>
-                        <PostStats postId={post.id} userId={user.data.id} />
+                        <PostStats like={post?.Like} save={post?.Save} postId={post.id} userId={user.data.id} />
                     </div>
 
                 </li>

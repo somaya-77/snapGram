@@ -22,11 +22,14 @@ const useGetProfile = (userId?: Promise<{ userId: string; }>) => {
       return Promise.reject(new Error("UserId is not defined"));
     },
     enabled: !!resolvedUserId,
-    staleTime: Infinity,
-    gcTime: 1000 * 60 * 60,
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-    refetchOnMount: false,
+    // staleTime: Infinity,
+    // gcTime: 1000 * 60 * 60,
+    // refetchOnWindowFocus: false,
+    // refetchOnReconnect: false,
+    // refetchOnMount: false,
+    staleTime: 0,
+    gcTime: 0,
+    refetchInterval: 20000,
   });
 
   return { data, error, isLoading };

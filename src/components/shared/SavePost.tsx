@@ -5,17 +5,18 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import useGetSaves from '@/hook/queries/save/useGetSave';
 import usePostSave from '@/hook/queries/save/usePostSave';
+import { Save } from '@/types';
 
 type Props = {
     postId: string;
     userId: string;
+    save: Save[];
 };
-const SavePost = ({ postId, userId }: Props) => {
+const SavePost = ({ postId, userId, save }: Props) => {
     const { mutate } = usePostSave();
     const [saved, setSaved] = useState(false);
     const { data, isLoading } = useGetSaves(+postId, +userId);
     const initialSaved = data?.initialSaved ?? false;
-    
     useEffect(() => {
         if (data) {
             setSaved(data.initialSaved);

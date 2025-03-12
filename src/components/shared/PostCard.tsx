@@ -19,6 +19,7 @@ const PostCard = () => {
       ) : (
         <ul className="flex flex-col flex-1 gap-9 w-full">
           {data?.map((post: IPost) => {
+            console.log("post",post)
             return (
               <li key={post.id} className="flex justify-center w-full">
                 <div className="post-card">
@@ -84,7 +85,7 @@ const PostCard = () => {
                   </Link>
 
                   {registration?.data?.id === post?.user?.id ? '' :
-                    <PostStats postId={post?.id} userId={registration?.data?.id} />}
+                    <PostStats like={post?.Like} save={post?.Save} postId={post?.id} userId={registration?.data?.id} />}
                 </div>
               </li>
             )

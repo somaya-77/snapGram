@@ -21,6 +21,8 @@ export async function GET() {
             include: {
                 tags: true,
                 user: true,
+                Like: true,
+                Save: true,
             },
             orderBy: {
                 createdAt: 'desc',

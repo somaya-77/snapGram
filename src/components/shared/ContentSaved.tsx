@@ -10,10 +10,6 @@ const ContentSaved = () => {
     const { data: user } = useGetUser()
     const { data: saves, isLoading } = useGetSavesUser(user?.id);
 
-    if (saves === undefined) {
-        return <p>No saved posts yet!</p>
-    }
-
     return isLoading ? <Loader /> : <ul className="grid-container">
         {saves?.map((save: IPost) => (
             <li key={save.id} className="relative min-w-80 h-80">
