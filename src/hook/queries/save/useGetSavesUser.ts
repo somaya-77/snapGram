@@ -3,7 +3,7 @@ import { Save } from "@/types";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import axios from "axios";
 
-export const fetchSavedPosts = async (userId: string): Promise<Save[]> => {
+export const fetchSavedPosts = async (userId: string) => {
     const response = await axios.get<Save[]>(`${DOMAIN}/api/posts/save/${userId}`);
 
     return response.data;
