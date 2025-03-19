@@ -4,6 +4,7 @@ import { verifyToken } from "@/lib/verifyToken";
 import { User } from "@prisma/client";
 import bcrypt from 'bcrypt';
 
+
 /**
  * @method  DELETE 
  * @routs   ~/api/users/profile/:id
@@ -71,12 +72,11 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ id: st
                 comment: true,
             },
         })
-
         if (!user) {
             return NextResponse.json({ message: "user not found!" }, { status: 404 });
         }
-
         return NextResponse.json(user, { status: 200 });
+
     } catch {
         return NextResponse.json({ message: "internal server error" }, { status: 500 })
     }

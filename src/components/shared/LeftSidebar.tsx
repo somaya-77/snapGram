@@ -1,26 +1,15 @@
-'use client'
+
 import Link from "next/link";
 import Image from "next/image";
 import { sidebarLinks } from "@/constants";
 import { LinkSidBar, Loader, Logout } from "./";
 import useGetUser from "@/hook/queries/users/useGetUsers";
 import { useGetProfile } from "@/hook/queries";
-import { useEffect } from "react";
-
 
 const LeftSidebar = () => {
-  // const user = useGetUser();
-  // const id = user?.data?.id as string | undefined;
-  // const { data: profile, isLoading } = useGetProfile(id);  
-  const isLoading = false
-//   const profile = JSON.parse(localStorage.getItem("user") || "{}");
-// console.log(profile)
-  
-  let profile = null
-  useEffect(() => {
-    
-    profile = JSON.parse(localStorage.getItem("user") || "{}");
-}, []);
+  const user = useGetUser();
+  const id = user?.data?.id as string | undefined;
+  const { data: profile, isLoading } = useGetProfile(id);  
 
   return (
     <nav className="leftSideBar">
