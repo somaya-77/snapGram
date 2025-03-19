@@ -19,7 +19,7 @@ const UpdateUserForm = () => {
   const params = useParams();
   const id = params?.id as string | undefined;
   const userIdPromise = id && Promise.resolve({ userId: id });
-  const { data: profile } = useGetProfile(userIdPromise)
+  const { data: profile } = useGetProfile(id)
   const { mutate, isPending } = usePutProfile()
 
   const form = useForm<z.infer<typeof ProfileValidation>>({

@@ -55,7 +55,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
 export async function GET(_: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = await params;
-    const id = parseInt(resolvedParams.id);
+    const id =  parseInt(resolvedParams.id);
     try {
         const user = await prisma.user.findUnique({
             where: { id },
@@ -90,7 +90,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ id: st
  */
 
 
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }>}) {
     const resolvedParams = await params;
     const id = parseInt(resolvedParams.id);
     try {

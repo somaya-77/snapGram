@@ -17,8 +17,8 @@ export async function POST() {
             secure: true,
             sameSite: "none",
             path: "/",
-            // domain: "localhost",
-            domain: "snapgram-social-media-app.netlify.app",
+            domain: "localhost",
+            // domain: "snapgram-social-media-app.netlify.app",
             expires: new Date(0),  
         });
         return NextResponse.json({ message: "Logged out successfully" }, { status: 200 });

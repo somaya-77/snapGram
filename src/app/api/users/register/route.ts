@@ -57,6 +57,8 @@ export async function POST(request: NextRequest) {
             username: newUser.username,
             isAdmin: newUser.isAdmin
         });
+
+        
         return NextResponse.json({
             message: "Registered & Authenticated",
             token: cookie,

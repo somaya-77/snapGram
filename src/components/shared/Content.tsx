@@ -19,7 +19,7 @@ const Content = () => {
     const profileId = new Promise<{ userId: string }>((resolve) => {
         resolve({ userId: id });
     });
-    const { data: profile, isLoading } = useGetProfile(profileId);
+    const { data: profile, isLoading } = useGetProfile(id);
     
     return (
         <>

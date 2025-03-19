@@ -5,13 +5,23 @@ import { sidebarLinks } from "@/constants";
 import { LinkSidBar, Loader, Logout } from "./";
 import useGetUser from "@/hook/queries/users/useGetUsers";
 import { useGetProfile } from "@/hook/queries";
+import { useEffect } from "react";
 
 
 const LeftSidebar = () => {
-  const user = useGetUser();
-  const id = user?.data?.id as string | undefined;
-  const { data: profile, isLoading } = useGetProfile(Promise.resolve({ userId: id }));  
+  // const user = useGetUser();
+  // const id = user?.data?.id as string | undefined;
+  // const { data: profile, isLoading } = useGetProfile(id);  
+  const isLoading = false
+//   const profile = JSON.parse(localStorage.getItem("user") || "{}");
+// console.log(profile)
   
+  let profile = null
+  useEffect(() => {
+    
+    profile = JSON.parse(localStorage.getItem("user") || "{}");
+}, []);
+
   return (
     <nav className="leftSideBar">
       <div className="flex flex-col gap-11 ">

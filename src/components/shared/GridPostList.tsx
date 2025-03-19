@@ -15,7 +15,7 @@ const GridPostList = ({ searchQuery }: GridPostListProps) => {
     const searchData = useSearchPosts(searchQuery);
     const id = user?.data?.id as string | undefined;
     const userIdPromise = Promise.resolve({ userId: id });
-    const { data: profile } = useGetProfile(userIdPromise)
+    const { data: profile } = useGetProfile(id)
 
     const posts = searchData.data && searchData.data.length > 0 ? searchData.data : data;
     return (
