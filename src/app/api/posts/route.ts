@@ -23,6 +23,7 @@ export async function GET() {
                 user: true,
                 Like: true,
                 Save: true,
+                comment: true,
             },
             orderBy: {
                 createdAt: 'desc',

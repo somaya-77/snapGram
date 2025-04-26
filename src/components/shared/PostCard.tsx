@@ -84,7 +84,7 @@ const PostCard = () => {
                   </Link>
 
                   {registration?.data?.id === post?.user?.id ? '' :
-                    <PostStats like={post?.Like} save={post?.Save} postId={post?.id} userId={registration?.data?.id} />}
+                    <PostStats like={post?.Like} save={post?.Save} postId={post?.id} userId={registration?.data?.id} comment={post?.comment}/>}
                 </div>
               </li>
             )
